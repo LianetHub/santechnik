@@ -1,0 +1,387 @@
+//============ МОДУЛИ ====================
+@import 'modules/popup';
+
+//============ МОДУЛИ ====================
+
+.caption {
+	font-size: 1.125rem;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.title {
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.625rem;
+	@media (min-width: $md5) {
+		font-size: 2.25rem;
+	}
+}
+
+.title-xl {
+	font-size: 3.75rem;
+	font-weight: 800;
+}
+
+.title-sm {
+	font-weight: 700;
+	font-size: 1.25rem;
+	@media (min-width: $md5) {
+		font-size: 1.375rem;
+	}
+}
+
+.title-md {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 125%;
+}
+
+.font-normal {
+	font-weight: 400;
+}
+
+.promocode {
+	display: flex;
+	align-items: center;
+	gap: 1.19rem;
+	// .promocode__value
+	&__value {
+		border-radius: 0.4375rem;
+		border: 1px dashed #030619;
+		background: #fff;
+		box-shadow: 0 0 rem(20.9) 0 rgba(255, 255, 255, 0.11) inset;
+		text-align: center;
+		padding: 0.75rem;
+		width: 16.9375rem;
+		font-size: 1.125rem;
+	}
+	// .promocode__btn
+	&__btn {
+		&.btn {
+			padding: 0.875rem 1.35rem;
+			font-size: 1.35rem;
+			border-radius: 0.4375rem;
+		}
+	}
+}
+
+.rate {
+	display: flex;
+	align-items: center;
+	gap: 0.63rem;
+	font-family: $font-geologica;
+	// .rate__value
+	&__value {
+		font-weight: 500;
+		font-size: 2.375rem;
+		@media (min-width: $md5) {
+			font-size: 3rem;
+		}
+	}
+	// .rate__items
+	&__items {
+		display: flex;
+		@media (min-width: $md5) {
+			gap: 0.1rem;
+		}
+	}
+	// .rate__item
+	&__item {
+		font-size: 1rem;
+		color: #e8e8e8;
+		width: 1.22056rem;
+		height: 1.22056rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&.active {
+			color: #fec900;
+		}
+	}
+	&__bottom {
+	}
+
+	// .rate__subtitle
+	&__subtitle {
+		margin-top: 0.12rem;
+		font-weight: 300;
+		font-size: 0.875rem;
+		@media (min-width: $md5) {
+			font-size: 1rem;
+		}
+	}
+}
+
+.note {
+	border-radius: 6.25rem;
+	background: #fff;
+	padding: 1rem 4.5rem 1rem 1rem;
+	font-family: $font-geologica;
+	font-size: 1.125rem;
+	font-weight: 700;
+	line-height: 133.333%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.5rem;
+	&::before {
+		content: '!';
+		border-radius: 0.75rem;
+		border: rem(1) solid #38a8fa;
+		color: #38a8fa;
+		background: #f5f7f9;
+		width: 2.5rem;
+		height: 2.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+[data-copy] {
+	position: relative;
+	.tooltip {
+		position: absolute;
+		bottom: calc(100% + rem(10));
+		right: 0;
+		opacity: 0;
+		visibility: hidden;
+		background: $text;
+		color: #fff;
+		padding: 0.5rem;
+		font-size: 0.75rem;
+		border-radius: 0.25rem;
+		transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
+		&.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+.table {
+	overflow-y: auto;
+	border-radius: 0.625rem;
+	background: #fff;
+	box-shadow: 0 rem(2) rem(2) 0 rgba(0, 0, 0, 0.15);
+	margin-right: rem(-20);
+	padding-right: rem(20);
+	& table {
+		font-family: $font-geologica;
+		width: 100%;
+		min-width: rem(1170);
+	}
+	& thead {
+		& tr {
+			background: #333;
+			color: #fff;
+			text-align: left;
+			& th {
+				padding: 1.15rem 1.5rem;
+				&:first-child {
+					border-top-left-radius: 0.625rem;
+				}
+				&:last-child {
+					border-top-right-radius: 0.625rem;
+				}
+			}
+		}
+	}
+	& tbody {
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 125%;
+		& td {
+			padding: 0.975rem 1.5rem;
+			vertical-align: top;
+			&:nth-child(2):last-child {
+				width: 71.5%;
+			}
+			&.sm-cell {
+				width: 22%;
+			}
+		}
+		& tr {
+			&:not(:last-child) {
+				border-bottom: rem(1) solid rgba($color: #000000, $alpha: 0.03);
+			}
+		}
+	}
+	& ul {
+		list-style: disc;
+		padding-left: 1em;
+	}
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		font-size: 0.875rem;
+		line-height: 142.857%;
+		&.row-sm {
+			justify-content: flex-start;
+		}
+		&:not(:last-child) {
+			margin-bottom: 0.75rem;
+		}
+	}
+}
+
+// .pc-only {
+// 	@media (max-width: $md4) {
+// 		display: none;
+// 	}
+// }
+
+// .uppercase-mobile {
+// 	@media (max-width: $md4) {
+// 		text-transform: uppercase;
+// 	}
+// }
+
+// .desktop-only {
+// 	@media (max-width: $md2) {
+// 		display: none;
+// 	}
+// }
+
+// .mobile-only {
+// 	@media (min-width: $md4) {
+// 		display: none;
+// 	}
+// }
+
+// .tablet-only {
+// 	@media (min-width: $md2) {
+// 		display: none;
+// 	}
+// }
+
+// ._loading {
+// 	color: transparent;
+// 	&::after {
+// 		content: "";
+// 		position: absolute;
+// 		top: 50%;
+// 		left: 50%;
+// 		transform: translate(-50%, -50%);
+// 		width: 20px;
+// 		height: 20px;
+// 		border: 3px solid #fff;
+// 		border-bottom-color: transparent;
+// 		border-radius: 50%;
+// 		transform-origin: center;
+// 		animation: rotation 1s linear infinite;
+// 		z-index: 3;
+// 	}
+// }
+
+// @keyframes rotation {
+// 	0% {
+// 		transform: translate(-50%, -50%) rotate(0deg);
+// 	}
+// 	100% {
+// 		transform: translate(-50%, -50%) rotate(360deg);
+// 	}
+// }
+
+.swiper-button-next,
+.swiper-button-prev {
+	width: 2rem;
+	height: 2rem;
+	@media (min-width: $md5) {
+		width: 2.9375rem;
+		height: 2.9375rem;
+	}
+	background: #fff;
+	color: #38a8fa;
+	border-radius: 50%;
+	box-shadow: 0 rem(2) rem(2) 0 rgba(0, 0, 0, 0.15);
+	&::after {
+		display: none;
+	}
+	&::before {
+		@extend %ic, .icon-chevron;
+		font-size: 0.5rem;
+		@media (min-width: $md5) {
+			font-size: 0.75rem;
+		}
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			color: #fff;
+			background: linear-gradient(0deg, #0167ca -13.79%, #38a8fa 102.34%);
+		}
+	}
+}
+
+.swiper-button-prev {
+	padding-right: 0.25rem;
+	@media (min-width: $md5) {
+		padding-right: 0.5rem;
+	}
+	left: 0;
+	&::before {
+		transform: rotate(90deg);
+	}
+}
+.swiper-button-next {
+	padding-left: 0.25rem;
+	@media (min-width: $md5) {
+		padding-left: 0.5rem;
+	}
+	right: 0;
+	&::before {
+		transform: rotate(-90deg);
+	}
+}
+
+//============ ОБЩИЕ ЭЛЕМЕНТЫ ============
+
+// Стилизация селекта
+// $selectBg: $orange;
+// $selectColor: $dark;
+
+// ::-moz-selection {
+// 	color: $selectColor;
+// 	background-color: $selectBg;
+// 	box-shadow: none;
+// }
+// ::selection {
+// 	color: $selectColor;
+// 	background-color: $selectBg;
+// 	-webkit-box-shadow: none;
+// 	box-shadow: none;
+// }
+// ::-moz-selection {
+// 	color: $selectColor;
+// 	background-color: $selectBg;
+// 	box-shadow: none;
+// }
+
+// Стилизация скролла
+
+//============ ОБЩИЕ ЭЛЕМЕНТЫ ============
+
+// ========== ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ ======
+.hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.cover-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+// ========== ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ ======
