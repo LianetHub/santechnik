@@ -1,13 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
     @@include('html/_head.html', {
-    'title': ''
+    'title': 'Сантехник'
     })
     <body>
         <div class="wrapper">
             @@include('html/_header.html', {})
             <main class="page">
-
+                <section class="promo">
+                    <div class="promo__container">
+                        <div class="promo__offer">
+                            <div class="promo__main">
+                                <h1 class="promo__title title">Сантехник Томск</h1>
+                                <p class="promo__subtitle">Профессионально <span>решаем любые сантехнические</span> задачи в Томске и области</p>
+                            </div>
+                            <ul class="promo__benefits">
+                                <li class="promo__benefit">
+                                    <div class="promo__benefit-icon">
+                                        <img src="@img/icons/SUV.png" alt="Иконка">
+                                    </div>
+                                    <div class="promo__benefit-text">Осмотр в черте города бесплатно</div>
+                                </li>
+                                <li class="promo__benefit">
+                                    <div class="promo__benefit-icon">
+                                        <img src="@img/icons/protect.png" alt="Иконка">
+                                    </div>
+                                    <div class="promo__benefit-text">Гарантия 5 лет</div>
+                                </li>
+                            </ul>
+                            <a href="" class="promo__btn btn btn-primary">Вызвать сантехника</a>
+                        </div>
+                        <div class="promo__image">
+                            <img src="@img/promo.png" alt="Фото сантехника">
+                        </div>
+                    </div>
+                </section>
+                <section class="services">
+                    <div class="services__container">
+                        <h2 class="services__title title">Наши услуги</h2>
+                        <ul class="services__list">
+                            @@loop('./html/templates/_service.html', './html/json/home-services.json')
+                        </ul>
+                    </div>
+                </section>
+                <section class="reviews">
+                    <div class="reviews__container">
+                        <div class="reviews__header">
+                            <h2 class="reviews__title title">Отзывы</h2>
+                            <div class="reviews__actions">
+                                <a href="" class="reviews__btn btn btn-primary-outline">Оставить отзыв</a>
+                                <div class="reviews__controls">
+                                    <button type="button" class="reviews__prev swiper-button-prev"></button>
+                                    <button type="button" class="reviews__next swiper-button-next"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reviews__slider swiper">
+                            <div class="swiper-wrapper">
+                                @@loop('./html/templates/_review.html', './html/json/home-reviews.json')
+                            </div>
+                        </div>
+                        <div class="reviews__more">
+                            <div class="reviews__more-title">Наши отзывы на других платформах</div>
+                            <p class="reviews__more-subtitle">Вы также можете оставить отзыв о нас на любой платформе</p>
+                            <div class="reviews__more-slider swiper">
+                                <div class="swiper-wrapper">
+                                    @@loop('./html/templates/_review-company.html', './html/json/home-reviews-company.json')
+                                </div>
+                                <div class="reviews__more-pagination swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
             @@include('html/_footer.html', {})
             <!-- @@include('html/_modal.html', {}) -->

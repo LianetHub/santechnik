@@ -1,0 +1,30 @@
+<div class="review swiper-slide">
+    <div class="review__header">
+        <div class="review__header-column">
+            <div class="review__rate rate">
+                <span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span>
+            </div>
+            <div class="review__author">Ксения Бирюкова</div>
+        </div>
+        @@if(typeof place !== 'undefined'){
+        <div class="review__place">
+            <a href="" class="review__place-logo">
+                <img src="@@place" alt="Лого">
+            </a>
+            <div class="review__place-body">
+                <div class="review__place-value">5.0</div>
+                <a href="" class="review__place-link icon-arrow">Яндекс карты</a>
+            </div>
+        </div>
+        }
+        @@if (typeof site !== 'undefined' && site === true) {
+        <div class="review__place">
+            <div class="review__place-icon">
+                <img src="@img/icons/quotes.png" alt="Иконка">
+            </div>
+            <div class="review__place-text">С сайта</div>
+        </div>
+        }
+    </div>
+    <blockquote class="review__quote">Отличный мастер! Обратилась с проблемой установки бойлера. Сама ноль по вдоль в этом вопросе. Олег помог "от" и "до" - от выбора бойлера и комплектующих до его запуска. Всё было оперативно, а главное, аккуратно. И по деньгам обошлось очень даже бюджетно) Наше сибирское лето с отключением горячей воды на месяц и мытьем в тазике прошло мимо меня)</blockquote>
+</div>

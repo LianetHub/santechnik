@@ -1,54 +1,4 @@
 .form {
-	// .form__header
-	&__header {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.19rem;
-	}
-	// .form__caption
-	&__caption {
-	}
-	// .form__rate
-	&__rate {
-		margin-top: -0.55rem;
-		color: #99a2ad;
-		font-size: 0.875rem;
-		font-weight: 700;
-		line-height: 130%;
-		letter-spacing: -0.01313rem;
-		display: flex;
-		align-items: center;
-		gap: 0.2rem;
-		&::before {
-			order: 1;
-			font-size: 0.75rem;
-		}
-	}
-	// .form__grid
-	&__grid {
-		margin-top: 0.75rem;
-		display: grid;
-		gap: 1.19rem;
-		row-gap: 0.85rem;
-		@media (min-width: $md4) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-	&__row {
-		border-radius: 0.5rem;
-		border: 1px solid #e3e7ef;
-		background: #fff;
-		position: relative;
-		padding: 0.85rem 1.2rem;
-	}
-	// .form__block
-	&__block {
-		@media (min-width: $md4) {
-			&.form__block-lg {
-				grid-column: span 2;
-			}
-		}
-	}
 	// .form__label
 	&__label {
 		color: #656565;
@@ -146,72 +96,70 @@
 	user-select: none;
 	white-space: nowrap;
 	text-align: center;
-	font-family: $font-geologica;
-	gap: 0.25rem;
-	font-weight: 500;
-	box-shadow: 0 0 rem(20.9) 0 rgba(255, 255, 255, 0.11) inset;
+	text-transform: uppercase;
+	font-size: 1.25rem;
+	font-weight: 600;
+	padding: 1.25rem 2rem;
 	border-radius: 0.75rem;
-	padding: 1.06rem 3.85rem;
-	font-size: 1.0625rem;
-	@media (min-width: $md5) {
-		font-size: 1.125rem;
-		border-radius: 0.4375rem;
-		padding: 1.25rem 3.85rem;
-	}
 	&::after {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
 		z-index: -1;
-		border-radius: 0.4375rem;
+		border-radius: 0.75rem;
+		opacity: 0;
 		transition: opacity 0.3s ease 0s;
 		pointer-events: none;
 	}
-	&.btn-secondary {
-		background: #14ae5c;
-		color: #fff;
-		&::after {
-			background: linear-gradient(87deg, #14ae5c 8.98%, #22be6b 94.96%);
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				background: darken($color: #14ae5c, $amount: 10);
-			}
-		}
-	}
 	&.btn-primary {
-		background: #298ff3;
+		background: linear-gradient(95deg, #747579 0%, #454952 30.63%);
 		color: #fff;
+		&::after {
+			background: linear-gradient(275deg, #747579 0%, #454952 30.63%);
+		}
 		@media (any-hover: hover) {
 			&:hover {
-				background: darken($color: #298ff3, $amount: 10);
+				&::after {
+					opacity: 1;
+				}
 			}
 		}
 	}
-	&.btn-dark {
-		color: #fff;
-		background: #030619;
-		&::after {
-			background: linear-gradient(87deg, #030619 8.98%, #1d213a 94.96%);
-		}
+	&.btn-primary-outline {
+		border: rem(2) solid #747579;
+		color: #454952;
 		@media (any-hover: hover) {
 			&:hover {
-				background: darken($color: #030619, $amount: 10);
+				background-color: #747579;
+				color: #fff;
 			}
 		}
 	}
-	&.btn-danger {
+	&.btn-secondary {
+		background: linear-gradient(95deg, #429fea 0%, #007adc 30.63%);
 		color: #fff;
-		background: #c12727;
 		&::after {
-			background: linear-gradient(87deg, #c12727 8.98%, #d23232 94.96%);
+			background: linear-gradient(275deg, #429fea 0%, #007adc 30.63%);
 		}
 		@media (any-hover: hover) {
 			&:hover {
-				background: darken($color: #c12727, $amount: 10);
+				&::after {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	&.btn-white {
+		border-radius: 0.75rem;
+		background: #fff;
+		color: #919191;
+		box-shadow: 0 rem(4) rem(12) 0 rgba(0, 0, 0, 0.07);
+		@media (any-hover: hover) {
+			&:hover {
+				color: #30475d;
 			}
 		}
 	}
@@ -223,7 +171,7 @@
 		padding: 1.25rem;
 	}
 	&:disabled,
-	&[aria-disabled='true'] {
+	&[aria-disabled="true"] {
 		cursor: default;
 		color: #fff;
 		background: #dfe0e1;
@@ -238,59 +186,59 @@
 	}
 }
 
-.toggler {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-	// .toggler__input
-	&__input {
-		&:checked {
-			& + .toggler__btn {
-				background: $accent;
-				&::before {
-					left: rem(14);
-				}
-			}
-		}
-	}
-	// .toggler__btn
-	&__btn {
-		position: relative;
-		width: rem(28);
-		height: rem(15);
-		flex-shrink: 0;
-		background: #a0bcd0;
-		border-radius: 3.375rem;
-		display: block;
-		cursor: pointer;
-		transition: background-color 0.3s ease 0s;
-		&::before {
-			content: '';
-			position: absolute;
-			top: rem(2);
-			left: rem(2);
-			width: rem(11);
-			height: rem(11);
-			border-radius: 50%;
-			background: #fff;
-			transition: left 0.3s ease 0s;
-		}
-	}
-	// .toggler__desc
-	&__desc {
-		color: #43596b;
-		font-size: 0.8125rem;
-		line-height: 1.3125rem;
-		letter-spacing: -0.01219rem;
-		& a {
-			transition: color 0.3s ease 0s;
-			color: $accent;
-			@media (any-hover: hover) {
-				&:hover {
-					text-decoration: underline;
-					color: darken($color: $accent, $amount: 10);
-				}
-			}
-		}
-	}
-}
+// .toggler {
+// 	display: flex;
+// 	align-items: center;
+// 	gap: 0.75rem;
+// 	// .toggler__input
+// 	&__input {
+// 		&:checked {
+// 			& + .toggler__btn {
+// 				background: $accent;
+// 				&::before {
+// 					left: rem(14);
+// 				}
+// 			}
+// 		}
+// 	}
+// 	// .toggler__btn
+// 	&__btn {
+// 		position: relative;
+// 		width: rem(28);
+// 		height: rem(15);
+// 		flex-shrink: 0;
+// 		background: #a0bcd0;
+// 		border-radius: 3.375rem;
+// 		display: block;
+// 		cursor: pointer;
+// 		transition: background-color 0.3s ease 0s;
+// 		&::before {
+// 			content: "";
+// 			position: absolute;
+// 			top: rem(2);
+// 			left: rem(2);
+// 			width: rem(11);
+// 			height: rem(11);
+// 			border-radius: 50%;
+// 			background: #fff;
+// 			transition: left 0.3s ease 0s;
+// 		}
+// 	}
+// 	// .toggler__desc
+// 	&__desc {
+// 		color: #43596b;
+// 		font-size: 0.8125rem;
+// 		line-height: 1.3125rem;
+// 		letter-spacing: -0.01219rem;
+// 		& a {
+// 			transition: color 0.3s ease 0s;
+// 			color: $accent;
+// 			@media (any-hover: hover) {
+// 				&:hover {
+// 					text-decoration: underline;
+// 					color: darken($color: $accent, $amount: 10);
+// 				}
+// 			}
+// 		}
+// 	}
+// }

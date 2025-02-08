@@ -1,231 +1,70 @@
 //============ МОДУЛИ ====================
-@import 'modules/popup';
+@import "modules/breadcrumbs";
 
 //============ МОДУЛИ ====================
 
-.caption {
-	font-size: 1.125rem;
-	font-weight: 500;
-	text-transform: uppercase;
-}
-
 .title {
-	font-weight: 700;
-	text-transform: uppercase;
-	font-size: 1.625rem;
-	@media (min-width: $md5) {
-		font-size: 2.25rem;
-	}
-}
-
-.title-xl {
-	font-size: 3.75rem;
-	font-weight: 800;
+	font-size: 3.375rem;
+	font-weight: 600;
 }
 
 .title-sm {
-	font-weight: 700;
-	font-size: 1.25rem;
-	@media (min-width: $md5) {
-		font-size: 1.375rem;
-	}
-}
-
-.title-md {
-	font-size: 2rem;
-	font-weight: 700;
-	line-height: 125%;
-}
-
-.font-normal {
-	font-weight: 400;
-}
-
-.promocode {
-	display: flex;
-	align-items: center;
-	gap: 1.19rem;
-	// .promocode__value
-	&__value {
-		border-radius: 0.4375rem;
-		border: 1px dashed #030619;
-		background: #fff;
-		box-shadow: 0 0 rem(20.9) 0 rgba(255, 255, 255, 0.11) inset;
-		text-align: center;
-		padding: 0.75rem;
-		width: 16.9375rem;
-		font-size: 1.125rem;
-	}
-	// .promocode__btn
-	&__btn {
-		&.btn {
-			padding: 0.875rem 1.35rem;
-			font-size: 1.35rem;
-			border-radius: 0.4375rem;
-		}
-	}
+	font-size: 1.5rem;
+	font-weight: 600;
 }
 
 .rate {
 	display: flex;
 	align-items: center;
-	gap: 0.63rem;
-	font-family: $font-geologica;
-	// .rate__value
-	&__value {
-		font-weight: 500;
-		font-size: 2.375rem;
-		@media (min-width: $md5) {
-			font-size: 3rem;
-		}
-	}
-	// .rate__items
-	&__items {
-		display: flex;
-		@media (min-width: $md5) {
-			gap: 0.1rem;
-		}
-	}
+	gap: 0.25rem;
+
 	// .rate__item
 	&__item {
-		font-size: 1rem;
-		color: #e8e8e8;
-		width: 1.22056rem;
-		height: 1.22056rem;
+		font-size: 1.4rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		&.active {
-			color: #fec900;
-		}
-	}
-	&__bottom {
-	}
-
-	// .rate__subtitle
-	&__subtitle {
-		margin-top: 0.12rem;
-		font-weight: 300;
-		font-size: 0.875rem;
-		@media (min-width: $md5) {
-			font-size: 1rem;
-		}
+		color: #fec900;
 	}
 }
 
-.note {
-	border-radius: 6.25rem;
-	background: #fff;
-	padding: 1rem 4.5rem 1rem 1rem;
-	font-family: $font-geologica;
-	font-size: 1.125rem;
-	font-weight: 700;
-	line-height: 133.333%;
+.socials {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
-	gap: 1.5rem;
-	&::before {
-		content: '!';
-		border-radius: 0.75rem;
-		border: rem(1) solid #38a8fa;
-		color: #38a8fa;
-		background: #f5f7f9;
-		width: 2.5rem;
-		height: 2.5rem;
+	gap: 1.25rem;
+	// .socials__link
+	&__link {
+		width: 2.5625rem;
+		height: 2.5625rem;
+		border-radius: 50%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-}
-
-[data-copy] {
-	position: relative;
-	.tooltip {
-		position: absolute;
-		bottom: calc(100% + rem(10));
-		right: 0;
-		opacity: 0;
-		visibility: hidden;
-		background: $text;
 		color: #fff;
-		padding: 0.5rem;
-		font-size: 0.75rem;
-		border-radius: 0.25rem;
-		transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
-		&.visible {
-			opacity: 1;
-			visibility: visible;
+		&.icon-whatsapp {
+			font-size: 1.35rem;
+			background: linear-gradient(180deg, #60fc7c 0%, #28d146 100%);
+		}
+		&.icon-telegram {
+			font-size: 1.125rem;
+			background: linear-gradient(180deg, #44bcf8 0%, #24a0dc 100%);
+		}
+		&.icon-vk {
+			background: linear-gradient(180deg, #45a7ea 0%, #3085c0 100%);
+		}
+
+		transition: opacity 0.3s ease;
+		@media (any-hover: hover) {
+			&:hover {
+				opacity: 0.7;
+			}
 		}
 	}
 }
 
-.table {
-	overflow-y: auto;
-	border-radius: 0.625rem;
-	background: #fff;
-	box-shadow: 0 rem(2) rem(2) 0 rgba(0, 0, 0, 0.15);
-	margin-right: rem(-20);
-	padding-right: rem(20);
-	& table {
-		font-family: $font-geologica;
-		width: 100%;
-		min-width: rem(1170);
-	}
-	& thead {
-		& tr {
-			background: #333;
-			color: #fff;
-			text-align: left;
-			& th {
-				padding: 1.15rem 1.5rem;
-				&:first-child {
-					border-top-left-radius: 0.625rem;
-				}
-				&:last-child {
-					border-top-right-radius: 0.625rem;
-				}
-			}
-		}
-	}
-	& tbody {
-		font-size: 1rem;
-		font-weight: 300;
-		line-height: 125%;
-		& td {
-			padding: 0.975rem 1.5rem;
-			vertical-align: top;
-			&:nth-child(2):last-child {
-				width: 71.5%;
-			}
-			&.sm-cell {
-				width: 22%;
-			}
-		}
-		& tr {
-			&:not(:last-child) {
-				border-bottom: rem(1) solid rgba($color: #000000, $alpha: 0.03);
-			}
-		}
-	}
-	& ul {
-		list-style: disc;
-		padding-left: 1em;
-	}
-	&__row {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 1rem;
-		font-size: 0.875rem;
-		line-height: 142.857%;
-		&.row-sm {
-			justify-content: flex-start;
-		}
-		&:not(:last-child) {
-			margin-bottom: 0.75rem;
-		}
-	}
+.accent-color {
+	color: #007adc;
 }
 
 // .pc-only {
@@ -288,52 +127,58 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-	width: 2rem;
-	height: 2rem;
-	@media (min-width: $md5) {
-		width: 2.9375rem;
-		height: 2.9375rem;
-	}
+	position: static;
+	margin: 0;
+	transform: none;
+	width: 4rem;
+	height: 4rem;
 	background: #fff;
-	color: #38a8fa;
 	border-radius: 50%;
-	box-shadow: 0 rem(2) rem(2) 0 rgba(0, 0, 0, 0.15);
+	border: rem(2) solid #747579;
+	color: #747579;
+	z-index: 1;
 	&::after {
 		display: none;
 	}
 	&::before {
 		@extend %ic, .icon-chevron;
-		font-size: 0.5rem;
-		@media (min-width: $md5) {
-			font-size: 0.75rem;
-		}
+		font-size: 1rem;
 	}
 	@media (any-hover: hover) {
 		&:hover {
 			color: #fff;
-			background: linear-gradient(0deg, #0167ca -13.79%, #38a8fa 102.34%);
+			background: linear-gradient(95deg, #747579 0%, #454952 30.63%);
 		}
 	}
 }
 
 .swiper-button-prev {
-	padding-right: 0.25rem;
-	@media (min-width: $md5) {
-		padding-right: 0.5rem;
-	}
 	left: 0;
+	padding-right: 0.25rem;
 	&::before {
 		transform: rotate(90deg);
 	}
 }
 .swiper-button-next {
-	padding-left: 0.25rem;
-	@media (min-width: $md5) {
-		padding-left: 0.5rem;
-	}
 	right: 0;
+	padding-left: 0.25rem;
 	&::before {
 		transform: rotate(-90deg);
+	}
+}
+
+.swiper-pagination {
+	.swiper-pagination-bullet {
+		width: 1.125rem;
+		height: 1.125rem;
+		border: rem(1) solid #007adc;
+		box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.07);
+		opacity: 1;
+		--swiper-pagination-bullet-horizontal-gap: 0.5rem;
+		&.swiper-pagination-bullet-active {
+			background: #007adc;
+			transform: scale(1.25);
+		}
 	}
 }
 

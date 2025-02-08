@@ -1,0 +1,20 @@
+[
+    {
+        "place": "@img/icons/yandex-location.svg"
+    },
+    {
+        "site": true
+    },
+    {
+        "place": "@img/icons/yandex-buisness.svg"
+    },
+    {
+        "place": "@img/icons/vk.png"
+    },
+    {
+        "place": "@img/icons/2gis.svg"
+    },
+    {
+        "place": "@img/icons/google.svg"
+    }
+]

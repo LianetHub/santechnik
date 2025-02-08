@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include('html/_head.html', {
+    'title': 'Сантехник'
+    })
+    <body>
+        <div class="wrapper">
+            @@include('html/_header.html', {})
+            <main class="page">
+                <nav aria-label="Хлебные крошки" class="breadcrumbs">
+                    <div class="breadcrumbs__container">
+                        <ul class="breadcrumbs__list">
+                            <li class="breadcrumbs__item">
+                                <a href="/" class="breadcrumbs__link">Главная</a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                                <a href="" class="breadcrumbs__link">Услуги</a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link active">Установка смесителя в Томске</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="service">
+                    <div class="service__container">
+                        <aside class="service__sidebar">
+                            <nav class="service__navbar">
+                                <h2 class="service__caption title-sm">Услуги</h2>
+                                <ul class="service__list">
+                                    <li class="service__item">
+                                        <div class="service__item-caption">Водоснабжение</div>
+                                        <ul class="service__categories">
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="service__item">
+                                        <div class="service__item-caption">Отопление</div>
+                                        <ul class="service__categories">
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="service__item">
+                                        <div class="service__item-caption">Канализация</div>
+                                        <ul class="service__categories">
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="service__item">
+                                        <div class="service__item-caption">Сварочные работы</div>
+                                        <ul class="service__categories">
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="service__item">
+                                        <div class="service__item-caption">Мелкий ремонт</div>
+                                        <ul class="service__categories">
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                            <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="service__block">
+                                <h2 class="service__caption title-sm">Популярные услуги</h2>
+                                <ul class="service__cards">
+                                    @@loop('./html/templates/_service.html', './html/json/service-services.json')
+                                    <li class="service-card">
+                                        <div class="service-card__logo">
+                                            <img src="@img/logo.png" class="cover-image" alt="Логотип">
+                                        </div>
+                                        <div class="service-card__picture">
+                                            <img src="@img/promo.png" alt="">
+                                        </div>
+                                        <div class="service-card__title accent-color">Профессионал своего дела</div>
+                                        <a href="" class="service-card__btn btn btn-primary">Позвонить</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                        <div class="service__content">
+                            <section class="service__card">
+                                <div class="service__slider">
+                                    <div class="service__slider-main swiper">
+                                        <div class="swiper-wrapper">
+                                            <a href="@img/works/06.png" data-fancybox="service" class="service__slide swiper-slide">
+                                                <img src="@img/works/06.png" class="cover-image" alt="Фото услуги">
+                                            </a>
+                                            <a href="@img/works/01.jpg" data-fancybox="service" class="service__slide swiper-slide">
+                                                <img src="@img/works/01.jpg" class="cover-image" alt="Фото услуги">
+                                            </a>
+                                            <a href="@img/works/02.jpg" data-fancybox="service" class="service__slide swiper-slide">
+                                                <img src="@img/works/02.jpg" class="cover-image" alt="Фото услуги">
+                                            </a>
+                                            <a href="@img/works/03.jpg" data-fancybox="service" class="service__slide swiper-slide">
+                                                <img src="@img/works/03.jpg" class="cover-image" alt="Фото услуги">
+                                            </a>
+                                            <a href="@img/works/04.jpg" data-fancybox="service" class="service__slide swiper-slide">
+                                                <img src="@img/works/04.jpg" class="cover-image" alt="Фото услуги">
+                                            </a>
+                                            <a href="@img/works/05.jpg" data-fancybox="service" class="service__slide swiper-slide">
+                                                <img src="@img/works/05.jpg" class="cover-image" alt="Фото услуги">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="service__slider-bottom">
+                                        <button type="button" class="service__prev icon-chevron-right"></button>
+                                        <div class="service__slider-thumbs swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="service__thumb swiper-slide">
+                                                    <img src="@img/works/06.png" class="cover-image" alt="Фото услуги">
+                                                </div>
+                                                <div class="service__thumb swiper-slide">
+                                                    <img src="@img/works/01.jpg" class="cover-image" alt="Фото услуги">
+                                                </div>
+                                                <div class="service__thumb swiper-slide">
+                                                    <img src="@img/works/02.jpg" class="cover-image" alt="Фото услуги">
+                                                </div>
+                                                <div class="service__thumb swiper-slide">
+                                                    <img src="@img/works/03.jpg" class="cover-image" alt="Фото услуги">
+                                                </div>
+                                                <div class="service__thumb swiper-slide">
+                                                    <img src="@img/works/04.jpg" class="cover-image" alt="Фото услуги">
+                                                </div>
+                                                <div class="service__thumb swiper-slide">
+                                                    <img src="@img/works/05.jpg" class="cover-image" alt="Фото услуги">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="service__next icon-chevron-right"></button>
+                                    </div>
+                                </div>
+                                <div class="service__main">
+                                    <h1 class="service__title title-sm">Установка смесителя в Томске</h1>
+                                    <div class="service__rate rate">
+                                        <span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span>
+                                    </div>
+                                    <p class="service__desc">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Для установки и дальнейшего ухода за смесителем вам для установки и дальнейшего ухода за смесителем вам...</p>
+                                    <button type="button" class="service__more">Читать далее</button>
+                                    <ul class="service__info">
+                                        <li class="service__info-item">
+                                            <div class="service__info-icon">
+                                                <img src="@img/icons/wallet.png" alt="Иконка">
+                                            </div>
+                                            <div class="service__info-body">
+                                                <div class="service__info-caption">Стоимость</div>
+                                                <div class="service__info-value">55 000 ₽</div>
+                                            </div>
+                                        </li>
+                                        <li class="service__info-item">
+
+                                        </li>
+                                        <li class="service__info-item">
+                                            <div class="service__info-icon">
+                                                <img src="@img/icons/clock.png" alt="Иконка">
+                                            </div>
+                                            <div class="service__info-body">
+                                                <div class="service__info-caption">Установка</div>
+                                                <div class="service__info-value">1 день</div>
+                                            </div>
+                                        </li>
+                                        <li class="service__info-item">
+                                            <div class="service__info-icon">
+                                                <img src="@img/icons/protect.png" alt="Иконка">
+                                            </div>
+                                            <div class="service__info-body">
+                                                <div class="service__info-caption">Гарантия</div>
+                                                <div class="service__info-value">10 лет</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                            <section class="prices">
+                                <h2 class="prices__title title-sm">Цены на установку смесителя</h2>
+                                <div class="prices__table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Наименование работы</th>
+                                                <th>Ед. изм</th>
+                                                <th>Цена</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="" class="icon-down"><span>Установка смесителя</span></a></td>
+                                                <td>Услуга</td>
+                                                <td>от <span class="accent-color">1 490 ₽</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="" class="icon-down"><span>Смеситель</span></a></td>
+                                                <td>шт.</td>
+                                                <td>от <span class="accent-color">990 ₽</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="" class="prices__btn btn btn-white">Смотреть прайс полностью</a>
+                            </section>
+                            <section class="works">
+                                <div class="works__header">
+                                    <h2 class="works__title title-sm">Наши работы</h2>
+                                    <div class="works__controls">
+                                        <button type="button" class="works__prev swiper-button-prev"></button>
+                                        <button type="button" class="works__next swiper-button-next"></button>
+                                    </div>
+                                </div>
+                                <div class="works__slider swiper">
+                                    <div class="swiper-wrapper">
+                                        <a href="@img/works/01.jpg" data-fancybox="works" class="works__slide swiper-slide">
+                                            <img src="@img/works/01.jpg" class="cover-image" alt="Пример работы">
+                                        </a>
+                                        <a href="@img/works/02.jpg" data-fancybox="works" class="works__slide swiper-slide">
+                                            <img src="@img/works/02.jpg" class="cover-image" alt="Пример работы">
+                                        </a>
+                                        <a href="@img/works/03.jpg" data-fancybox="works" class="works__slide swiper-slide">
+                                            <img src="@img/works/03.jpg" class="cover-image" alt="Пример работы">
+                                        </a>
+                                        <a href="@img/works/04.jpg" data-fancybox="works" class="works__slide swiper-slide">
+                                            <img src="@img/works/04.jpg" class="cover-image" alt="Пример работы">
+                                        </a>
+                                        <a href="@img/works/05.jpg" data-fancybox="works" class="works__slide swiper-slide">
+                                            <img src="@img/works/05.jpg" class="cover-image" alt="Пример работы">
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="faq">
+                                <h2 class="faq__title title-sm">Часто задаваемые вопросы</h2>
+                                <ul class="faq__list">
+                                    <li class="faq__item">
+                                        <div class="faq__item-caption">Капает с гибкого шланга смесителя, что делать?</div>
+                                        <div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
+                                    </li>
+                                    <li class="faq__item">
+                                        <div class="faq__item-caption">Какую подводку вы меняете?</div>
+                                        <div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
+                                    </li>
+                                    <li class="faq__item">
+                                        <div class="faq__item-caption">Можно ли вызвать мастера в день звонка?</div>
+                                        <div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
+                                    </li>
+                                </ul>
+                            </section>
+                            <section class="more">
+                                <div class="more__header">
+                                    <h2 class="more__title title-sm">Часто задаваемые вопросы</h2>
+                                    <div class="more__controls">
+                                        <button type="button" class="more__prev swiper-button-prev"></button>
+                                        <button type="button" class="more__next swiper-button-next"></button>
+                                    </div>
+                                </div>
+                                <div class="more__slider swiper">
+                                    <ul class="swiper-wrapper">
+                                        @@loop('./html/templates/_service.html', './html/json/more-services.json')
+                                    </ul>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            @@include('html/_footer.html', {})
+            <!-- @@include('html/_modal.html', {}) -->
+            @@include('html/_js.html', {})
+        </div>
+    </body>
+</html>
