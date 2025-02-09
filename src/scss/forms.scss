@@ -19,9 +19,8 @@
 		line-height: 150%;
 		padding: 0.75rem 1.25rem;
 		caret-color: $accent;
-		font-size: 0.875rem;
+		font-size: 1.25rem;
 		line-height: 140%;
-		letter-spacing: -0.01313rem;
 
 		&:hover,
 		&:focus {
@@ -47,12 +46,11 @@
 		background: #fff;
 		color: #1d1d1b;
 		line-height: 150%;
-		height: rem(93);
+		height: rem(150);
 		padding: 0.75rem 1.25rem;
 		caret-color: $accent;
-		font-size: 0.875rem;
+		font-size: 1.25rem;
 		line-height: 140%;
-		letter-spacing: -0.01313rem;
 
 		&:hover,
 		&:focus {
@@ -80,9 +78,10 @@
 	// .form__btn
 	&__btn {
 	}
-	// .form__submit
-	&__submit {
-		margin-top: 1.5rem;
+	&__privacy {
+		text-align: center;
+		color: #919191;
+		font-size: 0.875em;
 	}
 }
 
@@ -97,10 +96,12 @@
 	white-space: nowrap;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 1.25rem;
 	font-weight: 600;
 	padding: 1.25rem 2rem;
 	border-radius: 0.75rem;
+	@media (min-width: $md4) {
+		font-size: 1.25rem;
+	}
 	&::after {
 		content: "";
 		position: absolute;

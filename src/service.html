@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     @@include('html/_head.html', {
-    'title': 'Сантехник'
+    'title': 'Сантехник | Cтраница услуги'
     })
     <body>
         <div class="wrapper">
@@ -9,27 +9,30 @@
             <main class="page">
                 <nav aria-label="Хлебные крошки" class="breadcrumbs">
                     <div class="breadcrumbs__container">
-                        <ul class="breadcrumbs__list">
-                            <li class="breadcrumbs__item">
-                                <a href="/" class="breadcrumbs__link">Главная</a>
-                            </li>
-                            <li class="breadcrumbs__item">
-                                <a href="" class="breadcrumbs__link">Услуги</a>
-                            </li>
-                            <li class="breadcrumbs__item">
-                                <a class="breadcrumbs__link active">Установка смесителя в Томске</a>
-                            </li>
-                        </ul>
+                        <div class="breadcrumbs__slider swiper">
+                            <ul class="swiper-wrapper">
+                                <li class="breadcrumbs__item swiper-slide">
+                                    <a href="/" class="breadcrumbs__link">Главная</a>
+                                </li>
+                                <li class="breadcrumbs__item swiper-slide">
+                                    <a href="" class="breadcrumbs__link">Услуги</a>
+                                </li>
+                                <li class="breadcrumbs__item swiper-slide">
+                                    <a class="breadcrumbs__link active">Установка смесителя в Томске</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
                 <div class="service">
                     <div class="service__container">
                         <aside class="service__sidebar">
-                            <nav class="service__navbar">
+                            <nav id="service-navbar" class="service__navbar">
+                                <button type="button" data-fancybox-close class="service__navbar-close icon-close-circle"></button>
                                 <h2 class="service__caption title-sm">Услуги</h2>
-                                <ul class="service__list">
+                                <ul class="service__list" data-spollers data-one-spoller>
                                     <li class="service__item">
-                                        <div class="service__item-caption">Водоснабжение</div>
+                                        <div class="service__item-caption _active" data-spoller>Водоснабжение</div>
                                         <ul class="service__categories">
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -38,7 +41,7 @@
                                         </ul>
                                     </li>
                                     <li class="service__item">
-                                        <div class="service__item-caption">Отопление</div>
+                                        <div class="service__item-caption" data-spoller>Отопление</div>
                                         <ul class="service__categories">
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -47,7 +50,7 @@
                                         </ul>
                                     </li>
                                     <li class="service__item">
-                                        <div class="service__item-caption">Канализация</div>
+                                        <div class="service__item-caption" data-spoller>Канализация</div>
                                         <ul class="service__categories">
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -56,7 +59,7 @@
                                         </ul>
                                     </li>
                                     <li class="service__item">
-                                        <div class="service__item-caption">Сварочные работы</div>
+                                        <div class="service__item-caption" data-spoller>Сварочные работы</div>
                                         <ul class="service__categories">
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -65,7 +68,7 @@
                                         </ul>
                                     </li>
                                     <li class="service__item">
-                                        <div class="service__item-caption">Мелкий ремонт</div>
+                                        <div class="service__item-caption" data-spoller>Мелкий ремонт</div>
                                         <ul class="service__categories">
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
                                             <li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -84,10 +87,10 @@
                                             <img src="@img/logo.png" class="cover-image" alt="Логотип">
                                         </div>
                                         <div class="service-card__picture">
-                                            <img src="@img/promo.png" alt="">
+                                            <img src="@img/promo.png" alt="Сантехник">
                                         </div>
                                         <div class="service-card__title accent-color">Профессионал своего дела</div>
-                                        <a href="" class="service-card__btn btn btn-primary">Позвонить</a>
+                                        <a href="tel:89521599589" class="service-card__btn btn btn-primary">Позвонить</a>
                                     </li>
                                 </ul>
                             </div>
@@ -146,11 +149,14 @@
                                 </div>
                                 <div class="service__main">
                                     <h1 class="service__title title-sm">Установка смесителя в Томске</h1>
-                                    <div class="service__rate rate">
-                                        <span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span>
+                                    <div class="service__row">
+                                        <a href="#service-navbar" data-fancybox class="service__filter icon-filter"></a>
+                                        <div class="service__rate rate">
+                                            <span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span>
+                                        </div>
                                     </div>
                                     <p class="service__desc">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Для установки и дальнейшего ухода за смесителем вам для установки и дальнейшего ухода за смесителем вам...</p>
-                                    <button type="button" class="service__more">Читать далее</button>
+                                    <a href="#info" class="service__more">Читать далее</a>
                                     <ul class="service__info">
                                         <li class="service__info-item">
                                             <div class="service__info-icon">
@@ -160,9 +166,47 @@
                                                 <div class="service__info-caption">Стоимость</div>
                                                 <div class="service__info-value">55 000 ₽</div>
                                             </div>
+                                            <div class="service__info-more">
+                                                <button class="service__info-btn icon-question"></button>
+                                                <div class="service__popup ">
+                                                    <div class="service__popup-header">
+                                                        <div class="service__popup-title">Цена может измениться</div>
+                                                        <button type="button" aria-label="Закрыть попап" class="service__popup-close icon-close-circle"></button>
+                                                    </div>
+                                                    <ul class="service__popup-list">
+                                                        <li class="service__popup-row">
+                                                            <div class="service__popup-service">Удлинить батарею</div>
+                                                            <div class="service__popup-price">1 490 ₽</div>
+                                                        </li>
+                                                        <li class="service__popup-row">
+                                                            <div class="service__popup-service">Удлинить батарею</div>
+                                                            <div class="service__popup-price">1 490 ₽</div>
+                                                        </li>
+                                                        <li class="service__popup-row">
+                                                            <div class="service__popup-service">Удлинить батарею</div>
+                                                            <div class="service__popup-price">1 490 ₽</div>
+                                                        </li>
+                                                        <li class="service__popup-row">
+                                                            <div class="service__popup-service">Удлинить батарею</div>
+                                                            <div class="service__popup-price">1 490 ₽</div>
+                                                        </li>
+                                                        <li class="service__popup-row">
+                                                            <div class="service__popup-service">Удлинить батарею</div>
+                                                            <div class="service__popup-price">1 490 ₽</div>
+                                                        </li>
+                                                    </ul>
+                                                    <p class="service__popup-text">Чтобы узнать более точную стоимость пришлите фотографию в WhatsApp</p>
+                                                </div>
+                                            </div>
                                         </li>
-                                        <li class="service__info-item">
-
+                                        <!-- <li class="service__info-item">
+                                            <div class="service__info-caption">Стоимость может поменяться</div>
+                                            <button class="service__info-btn icon-question"></button>
+                                        </li> -->
+                                        <li class="service__info-socials">
+                                            <a href="" class="service__info-social icon-telegram">Telegram</a>
+                                            <a href="" class="service__info-social icon-whatsapp">WhatsApp</a>
+                                            <a href="tel:89521599589" class="service__info-social icon-phone">Позвонить</a>
                                         </li>
                                         <li class="service__info-item">
                                             <div class="service__info-icon">
@@ -181,6 +225,16 @@
                                                 <div class="service__info-caption">Гарантия</div>
                                                 <div class="service__info-value">10 лет</div>
                                             </div>
+                                            <div class="service__info-more">
+                                                <button class="service__info-btn icon-info"></button>
+                                                <div class="service__popup">
+                                                    <div class="service__popup-header">
+                                                        <div class="service__popup-title">Гарантия на выполненные работы</div>
+                                                        <button type="button" aria-label="Закрыть попап" class="service__popup-close icon-close-circle"></button>
+                                                    </div>
+                                                    <p class="service__popup-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis velit perspiciatis doloribus tenetur, facere illo maxime, ad soluta, voluptatem nisi sed accusamus amet aliquid assumenda recusandae deleniti quis autem. Nesciunt!</p>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -192,19 +246,19 @@
                                         <thead>
                                             <tr>
                                                 <th>Наименование работы</th>
-                                                <th>Ед. изм</th>
+                                                <th class="pc-only">Ед. изм</th>
                                                 <th>Цена</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td><a href="" class="icon-down"><span>Установка смесителя</span></a></td>
-                                                <td>Услуга</td>
+                                                <td class="pc-only">Услуга</td>
                                                 <td>от <span class="accent-color">1 490 ₽</span></td>
                                             </tr>
                                             <tr>
                                                 <td><a href="" class="icon-down"><span>Смеситель</span></a></td>
-                                                <td>шт.</td>
+                                                <td class="pc-only">шт.</td>
                                                 <td>от <span class="accent-color">990 ₽</span></td>
                                             </tr>
                                         </tbody>
@@ -212,6 +266,54 @@
                                 </div>
                                 <a href="" class="prices__btn btn btn-white">Смотреть прайс полностью</a>
                             </section>
+                            <div class="tabs" id="info">
+                                <div class="tabs__btns swiper">
+                                    <div class="swiper-wrapper">
+                                        <button class="tabs__btn swiper-slide active">Информация</button>
+                                        <button class="tabs__btn swiper-slide">Калькулятор</button>
+                                        <button class="tabs__btn swiper-slide">Заголовок</button>
+                                        <button class="tabs__btn swiper-slide">Что-то ещё</button>
+                                    </div>
+                                </div>
+                                <div class="tabs__body">
+                                    <div class="tabs__content active">
+                                        <div class="text-block">
+                                            <h2 class="title-sm">Установка смесителя в Томске</h2>
+                                            <p>Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Для установки и дальнейшего ухода за смесителем вам понадобятся следующие инструменты и материалы.Расскажем, как самостоятельно установить однорычажный.</p>
+                                            <p>Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</p>
+                                            <p>Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный</p>
+                                        </div>
+                                    </div>
+                                    <div class="tabs__content ">
+                                        <div class="text-block">
+                                            <h2 class="title-sm">Калькулятор</h2>
+                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus quo excepturi, nisi placeat vitae iusto voluptas facilis earum amet consectetur quod sit. Ratione deleniti, iusto modi quia quod velit reprehenderit.</p>
+                                        </div>
+                                    </div>
+                                    <div class="tabs__content ">
+                                        <div class="text-block">
+                                            <h2 class="title-sm">Заголовок</h2>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis quia et aperiam amet sit commodi hic? Dolor corporis, aperiam error at accusantium vitae ut doloribus quod architecto accusamus minus eveniet?</p>
+                                            <ul>
+                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fugit dignissimos impedit culpa, ullam quae corrupti aperiam iusto quibusdam. Laboriosam accusantium nemo ipsa iure, voluptates porro quo totam veniam natus.</li>
+                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus accusantium modi facere quidem excepturi? Nesciunt possimus, ipsa voluptates deleniti quia aliquid impedit, blanditiis magnam tempora quis optio magni voluptatibus eum!</li>
+                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tenetur voluptatem asperiores minus sit consectetur commodi, dicta doloremque repudiandae optio? Quod possimus iste quam magnam sint vitae recusandae ipsa aliquid!</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tabs__content ">
+                                        <div class="text-block">
+                                            <h2 class="title-sm">Что-то ещё</h2>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, explicabo! Dolor placeat perspiciatis repellat, iste doloribus veniam quis dolorem cum quasi nostrum excepturi inventore numquam ipsum facilis incidunt magnam sequi?</p>
+                                            <ol>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia dolorem, dolores nobis beatae officia labore suscipit. Aliquam error minus nulla quod deleniti, quidem, corporis vitae natus magni suscipit voluptates beatae!</li>
+                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, voluptas necessitatibus. Possimus praesentium a eos unde exercitationem tempora qui deserunt eum, voluptate obcaecati iusto fugiat incidunt, molestias quidem eveniet ad.</li>
+                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos cumque natus rem est odio excepturi inventore quas dignissimos in. Eligendi laudantium voluptas obcaecati explicabo nostrum iure commodi, repellat totam mollitia?</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <section class="works">
                                 <div class="works__header">
                                     <h2 class="works__title title-sm">Наши работы</h2>
@@ -242,24 +344,24 @@
                             </section>
                             <section class="faq">
                                 <h2 class="faq__title title-sm">Часто задаваемые вопросы</h2>
-                                <ul class="faq__list">
+                                <ul class="faq__list" data-spollers data-one-spoller>
                                     <li class="faq__item">
-                                        <div class="faq__item-caption">Капает с гибкого шланга смесителя, что делать?</div>
+                                        <div class="faq__item-caption _active" data-spoller>Капает с гибкого шланга смесителя, что делать?</div>
                                         <div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
                                     </li>
                                     <li class="faq__item">
-                                        <div class="faq__item-caption">Какую подводку вы меняете?</div>
+                                        <div class="faq__item-caption" data-spoller>Какую подводку вы меняете?</div>
                                         <div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
                                     </li>
                                     <li class="faq__item">
-                                        <div class="faq__item-caption">Можно ли вызвать мастера в день звонка?</div>
+                                        <div class="faq__item-caption" data-spoller>Можно ли вызвать мастера в день звонка?</div>
                                         <div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
                                     </li>
                                 </ul>
                             </section>
                             <section class="more">
                                 <div class="more__header">
-                                    <h2 class="more__title title-sm">Часто задаваемые вопросы</h2>
+                                    <h2 class="more__title title-sm">Другие услуги по теме</h2>
                                     <div class="more__controls">
                                         <button type="button" class="more__prev swiper-button-prev"></button>
                                         <button type="button" class="more__next swiper-button-next"></button>
@@ -276,7 +378,7 @@
                 </div>
             </main>
             @@include('html/_footer.html', {})
-            <!-- @@include('html/_modal.html', {}) -->
+            @@include('html/_modal.html', {})
             @@include('html/_js.html', {})
         </div>
     </body>

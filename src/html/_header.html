@@ -6,27 +6,742 @@
                     <img src="@img/logo.png" alt="Логотип">
                 </a>
                 <div class="header__contacts">
-                    <div class="header__contact icon-location">Томск + Северск + 200 км</div>
-                    <div class="header__contact icon-clock">с 09:00 до 20:00</div>
-                    <a href="tel:89521599589" class="header__contact icon-phone">8 (952) 159-95-89</a>
+                    <div class="header__contact desktop-only icon-location">Томск + Северск + 200 км</div>
+                    <div class="header__contact desktop-only icon-clock">с 09:00 до 20:00</div>
+                    <a href="tel:89521599589" class="header__contact icon-phone"><span>8 (952) 159-95-89</span></a>
                 </div>
-                <div class="header__search search">
+                <div class="header__search search ">
                     <button type="button" aria-label="Показать фото" class="search__toggler icon-search"></button>
                     <form action="#" class="search__form">
-                        <input type="text" autocomplete="off" name="form-search" class="search__form-input" placeholder="Поиск тура">
-                        <button type="submit" class="search__form-btn icon-search"></button>
+                        <input type="text" autocomplete="off" name="form-search" class="search__form-input" placeholder="Поиск...">
+                        <button type="reset" class="search__form-reset icon-close"></button>
+                        <button type="submit" class="search__form-btn">Найти</button>
+                        <div class="search__bar" style="display: none;">
+                            <ul class="search__bar-list"></ul>
+                        </div>
+                        <script id="search-data" type="application/json">
+                            [
+                                { "title": "Монтаж котлов и котельных" },
+                                { "title": "Ремонт котлов и систем отопления" },
+                                { "title": "Обслуживание котельных установок" },
+                                { "title": "Пусконаладка газовых котлов" },
+                                { "title": "Диагностика отопительных систем" },
+                                { "title": "Водоснабжение в квартирах" },
+                                { "title": "Система водоочистки" },
+                                { "title": "Водяной тёплый пол" },
+                                { "title": "Установка и замена радиаторов" },
+                                { "title": "Установка бойлера" },
+                                { "title": "Водоснабжение в частном доме" },
+                                { "title": "Установка фильтра для очистки воды" },
+                                { "title": "Проектирование систем отопления" },
+                                { "title": "Монтаж теплых полов" },
+                                { "title": "Установка газовых колонок" },
+                                { "title": "Монтаж водопроводных систем" },
+                                { "title": "Замена труб отопления" },
+                                { "title": "Ремонт систем водоснабжения" },
+                                { "title": "Обслуживание фильтров для воды" },
+                                { "title": "Диагностика газового оборудования" },
+                                { "title": "Монтаж насосных станций" },
+                                { "title": "Ремонт бойлеров" },
+                                { "title": "Промывка систем отопления" },
+                                { "title": "Чистка дымоходов котельных" },
+                                { "title": "Настройка автоматики котлов" }
+                            ]
+                        </script>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                const searchInput = document.querySelector(".search__form-input");
+                                const searchBar = document.querySelector(".search__bar");
+                                const searchList = document.querySelector(".search__bar-list");
+                                const resetButton = document.querySelector(".search__form-reset");
+
+                                const data = JSON.parse(document.getElementById("search-data").textContent);
+
+                                function highlightText(text, query) {
+                                    const regex = new RegExp(query, "gi");
+                                    return text.replace(regex, (match) => `<span class="highlighted">${match}</span>`);
+                                }
+
+                                function updateSearchResults(query) {
+                                    searchList.innerHTML = "";
+                                    if (!query.trim()) {
+                                        searchBar.style.display = "none";
+                                        return;
+                                    }
+
+                                    const filteredData = data.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+
+                                    if (filteredData.length) {
+                                        filteredData.forEach(item => {
+                                            const listItem = document.createElement("li");
+                                            listItem.classList.add("search__bar-item");
+                                            listItem.innerHTML = `<a href="#" class="search__bar-link">${highlightText(item.title, query)}</a>`;
+                                            searchList.appendChild(listItem);
+                                        });
+                                        searchBar.style.display = "block";
+                                    } else {
+                                        searchBar.style.display = "none";
+                                    }
+                                }
+
+                                searchInput.addEventListener("input", (e) => {
+                                    updateSearchResults(e.target.value);
+                                });
+
+                                resetButton.addEventListener("click", () => {
+                                    searchInput.value = "";
+                                    searchList.innerHTML = "";
+                                    searchBar.style.display = "none";
+                                });
+                            });
+                        </script>
                     </form>
                 </div>
             </div>
             <nav aria-label="Меню" class="header__menu menu">
                 <ul class="menu__list">
-                    <li class="menu__item"><a href="" class="menu__link accent-color">Главная</a></li>
-                    <li class="menu__item"><a href="" class="menu__link">Каталог</a></li>
-                    <li class="menu__item"><a href="" class="menu__link">О нас</a></li>
-                    <li class="menu__item"><a href="" class="menu__link">FAQ</a></li>
-                    <li class="menu__item"><a href="" class="menu__link">Отзывы</a></li>
-                    <li class="menu__item"><a href="" class="menu__link">Контакты</a></li>
+                    <li class="menu__item">
+                        <button type="button" class="menu__btn icon-chevron">Каталог</button>
+                        <div class="submenu">
+                            <button type="button" class="submenu__close icon-close"></button>
+                            <div class="submenu__legend">
+                                <div class="submenu__legend-item">
+                                    <div class="subsubmenu__icon">
+                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                    </div>
+                                    В квартире
+                                </div>
+                                <div class="submenu__legend-item">
+                                    <div class="subsubmenu__icon">
+                                        <img src="@img/icons/house.png" alt="Иконка">
+                                    </div>
+                                    В частном доме
+                                </div>
+                            </div>
+                            <ul class="submenu__list">
+                                <li class="submenu__item">
+                                    <button type="button" class="submenu__btn icon-chevron-right ">Отопление</button>
+                                    <div class="subsubmenu">
+                                        <button type="button" class="subsubmenu__close icon-close"></button>
+                                        <div class="subsubmenu__legend">
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/flat.png" alt="Иконка">
+                                                </div>
+                                                В квартире
+                                            </div>
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/house.png" alt="Иконка">
+                                                </div>
+                                                В частном доме
+                                            </div>
+                                        </div>
+                                        <ul class="subsubmenu__list">
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Установка смесителя
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link icon-right">
+                                                    Все услуги
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="submenu__item">
+                                    <button type="button" class="submenu__btn icon-chevron-right">Водоснабжение</button>
+                                    <div class="subsubmenu">
+                                        <button type="button" class="subsubmenu__close icon-close"></button>
+                                        <div class="subsubmenu__legend">
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/flat.png" alt="Иконка">
+                                                </div>
+                                                В квартире
+                                            </div>
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/house.png" alt="Иконка">
+                                                </div>
+                                                В частном доме
+                                            </div>
+                                        </div>
+                                        <ul class="subsubmenu__list">
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Водоснабжение
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link icon-right">
+                                                    Все услуги
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="submenu__item">
+                                    <button type="button" class="submenu__btn icon-chevron-right">Канализация</button>
+                                    <div class="subsubmenu">
+                                        <button type="button" class="subsubmenu__close icon-close"></button>
+                                        <div class="subsubmenu__legend">
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/flat.png" alt="Иконка">
+                                                </div>
+                                                В квартире
+                                            </div>
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/house.png" alt="Иконка">
+                                                </div>
+                                                В частном доме
+                                            </div>
+                                        </div>
+                                        <ul class="subsubmenu__list">
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Канализация
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link icon-right">
+                                                    Все услуги
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="submenu__item">
+                                    <button type="button" class="submenu__btn icon-chevron-right">Сварочные работы</button>
+                                    <div class="subsubmenu">
+                                        <button type="button" class="subsubmenu__close icon-close"></button>
+                                        <div class="subsubmenu__legend">
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/flat.png" alt="Иконка">
+                                                </div>
+                                                В квартире
+                                            </div>
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/house.png" alt="Иконка">
+                                                </div>
+                                                В частном доме
+                                            </div>
+                                        </div>
+                                        <ul class="subsubmenu__list">
+
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Сварочные работы
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link icon-right">
+                                                    Все услуги
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="submenu__item">
+                                    <button type="button" class="submenu__btn icon-chevron-right">Мелкий ремонт</button>
+                                    <div class="subsubmenu">
+                                        <button type="button" class="subsubmenu__close icon-close"></button>
+                                        <div class="subsubmenu__legend">
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/flat.png" alt="Иконка">
+                                                </div>
+                                                В квартире
+                                            </div>
+                                            <div class="subsubmenu__legend-item">
+                                                <div class="subsubmenu__icon">
+                                                    <img src="@img/icons/house.png" alt="Иконка">
+                                                </div>
+                                                В частном доме
+                                            </div>
+                                        </div>
+                                        <ul class="subsubmenu__list">
+
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/house.png" alt="Иконка">
+                                                    </div>
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link">
+                                                    Мелкий ремонт
+                                                    <div class="subsubmenu__icon">
+                                                        <img src="@img/icons/flat.png" alt="Иконка">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="subsubmenu__item">
+                                                <a href="" class="subsubmenu__link icon-right">
+                                                    Все услуги
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="submenu__footer">
+                                <div class="submenu__footer-text">Не нашли? <br> Используйте поиск</div>
+                                <button type="button" class="submenu__search icon-search">Поиск</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu__item menu__item-mobile">
+                        <button type="button" class="menu__btn icon-chevron">Меню</button>
+                        <ul class="submenu">
+                            <li class="menu__item initial"><a href="" class="menu__link">Главная</a></li>
+                            <li class="menu__item">
+                                <button type="button" class="menu__btn icon-chevron">О нас</button>
+                                <div class="submenu ">
+                                    <button type="button" class="submenu__close icon-close"></button>
+                                    <ul class="submenu__list">
+
+                                        <li class="submenu__item">
+                                            <a href="" class="submenu__link">Блог</a>
+                                        </li>
+                                        <li class="submenu__item">
+                                            <a href="" class="submenu__link">Контакты</a>
+                                        </li>
+                                        <li class="submenu__item">
+                                            <a href="" class="submenu__link">Отзывы</a>
+                                        </li>
+                                        <li class="submenu__item">
+                                            <a href="" class="submenu__link">Мелкий ремонт</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu__item"><a href="" class="menu__link">FAQ</a></li>
+                            <li class="menu__item"><a href="" class="menu__link">Отзывы</a></li>
+                            <li class="menu__item"><a href="" class="menu__link">Контакты</a></li>
+                        </ul>
+                    </li>
                 </ul>
+                <button type="button" class="menu__search-toggler">Поиск</button>
+                <a href="tel:89521599589" class="menu__phone icon-phone"></a>
                 <div class="menu__socials socials">
                     <a href="" class="socials__link icon-whatsapp"></a>
                     <a href="" class="socials__link icon-telegram"></a>

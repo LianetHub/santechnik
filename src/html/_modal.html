@@ -1,34 +1,37 @@
-<div id="sign-in" class="popup">
+<div id="callback" class="popup">
     <div class="popup__body">
-        <button type="button" class="popup__close" data-fancybox-close>
-            <img src="@img/close.svg" alt="Закрыть">
-        </button>
-        <h3 class="popup__title">Вход</h3>
+        <button type="button" class="popup__close icon-close" data-fancybox-close></button>
+        <h3 class="popup__title">Оставить заявку</h3>
         <form action="#" class="popup__form form">
-            <input type="text" name="login" required class="form__input" placeholder="Логин">
-            <input type="password" name="pass" class="form__input" placeholder="Пароль">
-            <button class="form__btn">Войти</button>
+            <input type="tel" name="phone" required class="form__input" placeholder="Номер телефона">
+            <textarea name="message" class="form__textarea" placeholder="Опишите проблему"></textarea>
+            <button class="form__btn btn btn-primary">Отправить заявку</button>
             <label class="form__privacy">
                 Нажимая на кнопку, вы даете свое согласие на обработку персональных данных
             </label>
         </form>
     </div>
 </div>
-<div id="sign-up" class="popup">
+<div id="add-review" class="popup">
     <div class="popup__body">
-        <button type="button" class="popup__close" data-fancybox-close>
-            <img src="@img/close.svg" alt="Закрыть">
-        </button>
-        <h3 class="popup__title">Регистрация</h3>
+        <button type="button" data-fancybox-close class="popup__close icon-close"></button>
+        <h4 class="popup__title">Оставить отзыв</h4>
         <form action="#" class="popup__form form">
-            <input type="text" name="login" required class="form__input" placeholder="Логин">
-            <input type="email" name="email" required class="form__input" placeholder="E-mail">
-            <input type="password" name="pass" class="form__input" placeholder="Пароль">
-            <input type="password" name="pass-repeat" class="form__input" placeholder="Пароль еще раз">
-            <button class="form__btn">Зарегистрироваться</button>
-            <label class="form__privacy">
-                Нажимая на кнопку, вы даете свое согласие на обработку персональных данных
-            </label>
+            <div class="star-rating">
+                <input type="radio" name="rate" id="rate-5" value="5" class="star-rating__input hidden" hidden>
+                <label class="star-rating__label" for="rate-5"></label>
+                <input type="radio" name="rate" id="rate-4" value="4" class="star-rating__input hidden" hidden>
+                <label class="star-rating__label" for="rate-4"></label>
+                <input type="radio" name="rate" id="rate-3" value="3" class="star-rating__input hidden" hidden>
+                <label class="star-rating__label" for="rate-3"></label>
+                <input type="radio" name="rate" id="rate-2" value="2" class="star-rating__input hidden" hidden>
+                <label class="star-rating__label" for="rate-2"></label>
+                <input type="radio" name="rate" id="rate-1" value="1" class="star-rating__input hidden" hidden>
+                <label class="star-rating__label" for="rate-1"></label>
+            </div>
+            <input type="text" name="text" class="form__input" placeholder="Ваше имя">
+            <textarea name="quote" class="form__textarea" required placeholder="Напишите отзыв"></textarea>
+            <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
     </div>
 </div>

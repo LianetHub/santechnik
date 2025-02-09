@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-	<title>Сантехник</title>
+	<title>Сантехник | Cтраница услуги</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,11 +18,11 @@
 	<link rel="manifest" href="/site.webmanifest">
 	<!-- favicon -->
 	<!-- plugnis -->
-	<link rel="stylesheet" href="css/libs/fancybox.css?_v=20250208203651">
-	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css?_v=20250208203651">
+	<link rel="stylesheet" href="css/libs/fancybox.css?_v=20250209183443">
+	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css?_v=20250209183443">
 	<!-- plugnis -->
-	<link rel="stylesheet" href="css/reset.min.css?_v=20250208203651">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250208203651">
+	<link rel="stylesheet" href="css/reset.min.css?_v=20250209183443">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250209183443">
 </head>
 
 <body>
@@ -37,27 +37,798 @@
 							</picture>
 						</a>
 						<div class="header__contacts">
-							<div class="header__contact icon-location">Томск + Северск + 200 км</div>
-							<div class="header__contact icon-clock">с 09:00 до 20:00</div>
-							<a href="tel:89521599589" class="header__contact icon-phone">8 (952) 159-95-89</a>
+							<div class="header__contact desktop-only icon-location">Томск + Северск + 200 км</div>
+							<div class="header__contact desktop-only icon-clock">с 09:00 до 20:00</div>
+							<a href="tel:89521599589" class="header__contact icon-phone"><span>8 (952) 159-95-89</span></a>
 						</div>
-						<div class="header__search search">
+						<div class="header__search search ">
 							<button type="button" aria-label="Показать фото" class="search__toggler icon-search"></button>
 							<form action="#" class="search__form">
-								<input type="text" autocomplete="off" name="form-search" class="search__form-input" placeholder="Поиск тура">
-								<button type="submit" class="search__form-btn icon-search"></button>
+								<input type="text" autocomplete="off" name="form-search" class="search__form-input" placeholder="Поиск...">
+								<button type="reset" class="search__form-reset icon-close"></button>
+								<button type="submit" class="search__form-btn">Найти</button>
+								<div class="search__bar" style="display: none;">
+									<ul class="search__bar-list"></ul>
+								</div>
+								<script id="search-data" type="application/json">
+									[{
+										"title": "Монтаж котлов и котельных"
+									}, {
+										"title": "Ремонт котлов и систем отопления"
+									}, {
+										"title": "Обслуживание котельных установок"
+									}, {
+										"title": "Пусконаладка газовых котлов"
+									}, {
+										"title": "Диагностика отопительных систем"
+									}, {
+										"title": "Водоснабжение в квартирах"
+									}, {
+										"title": "Система водоочистки"
+									}, {
+										"title": "Водяной тёплый пол"
+									}, {
+										"title": "Установка и замена радиаторов"
+									}, {
+										"title": "Установка бойлера"
+									}, {
+										"title": "Водоснабжение в частном доме"
+									}, {
+										"title": "Установка фильтра для очистки воды"
+									}, {
+										"title": "Проектирование систем отопления"
+									}, {
+										"title": "Монтаж теплых полов"
+									}, {
+										"title": "Установка газовых колонок"
+									}, {
+										"title": "Монтаж водопроводных систем"
+									}, {
+										"title": "Замена труб отопления"
+									}, {
+										"title": "Ремонт систем водоснабжения"
+									}, {
+										"title": "Обслуживание фильтров для воды"
+									}, {
+										"title": "Диагностика газового оборудования"
+									}, {
+										"title": "Монтаж насосных станций"
+									}, {
+										"title": "Ремонт бойлеров"
+									}, {
+										"title": "Промывка систем отопления"
+									}, {
+										"title": "Чистка дымоходов котельных"
+									}, {
+										"title": "Настройка автоматики котлов"
+									}]
+
+								</script>
+								<script>
+									document.addEventListener("DOMContentLoaded", function() {
+										const searchInput = document.querySelector(".search__form-input");
+										const searchBar = document.querySelector(".search__bar");
+										const searchList = document.querySelector(".search__bar-list");
+										const resetButton = document.querySelector(".search__form-reset");
+										const data = JSON.parse(document.getElementById("search-data").textContent);
+
+										function highlightText(text, query) {
+											const regex = new RegExp(query, "gi");
+											return text.replace(regex, (match) => `<span class="highlighted">${match}</span>`);
+										}
+
+										function updateSearchResults(query) {
+											searchList.innerHTML = "";
+											if (!query.trim()) {
+												searchBar.style.display = "none";
+												return;
+											}
+											const filteredData = data.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+											if (filteredData.length) {
+												filteredData.forEach(item => {
+													const listItem = document.createElement("li");
+													listItem.classList.add("search__bar-item");
+													listItem.innerHTML = `<a href="#" class="search__bar-link">${highlightText(item.title, query)}</a>`;
+													searchList.appendChild(listItem);
+												});
+												searchBar.style.display = "block";
+											} else {
+												searchBar.style.display = "none";
+											}
+										}
+										searchInput.addEventListener("input", (e) => {
+											updateSearchResults(e.target.value);
+										});
+										resetButton.addEventListener("click", () => {
+											searchInput.value = "";
+											searchList.innerHTML = "";
+											searchBar.style.display = "none";
+										});
+									});
+
+								</script>
 							</form>
 						</div>
 					</div>
 					<nav aria-label="Меню" class="header__menu menu">
 						<ul class="menu__list">
-							<li class="menu__item"><a href="" class="menu__link accent-color">Главная</a></li>
-							<li class="menu__item"><a href="" class="menu__link">Каталог</a></li>
-							<li class="menu__item"><a href="" class="menu__link">О нас</a></li>
-							<li class="menu__item"><a href="" class="menu__link">FAQ</a></li>
-							<li class="menu__item"><a href="" class="menu__link">Отзывы</a></li>
-							<li class="menu__item"><a href="" class="menu__link">Контакты</a></li>
+							<li class="menu__item">
+								<button type="button" class="menu__btn icon-chevron">Каталог</button>
+								<div class="submenu">
+									<button type="button" class="submenu__close icon-close"></button>
+									<div class="submenu__legend">
+										<div class="submenu__legend-item">
+											<div class="subsubmenu__icon">
+												<picture>
+													<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+												</picture>
+											</div> В квартире
+										</div>
+										<div class="submenu__legend-item">
+											<div class="subsubmenu__icon">
+												<picture>
+													<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+												</picture>
+											</div> В частном доме
+										</div>
+									</div>
+									<ul class="submenu__list">
+										<li class="submenu__item">
+											<button type="button" class="submenu__btn icon-chevron-right ">Отопление</button>
+											<div class="subsubmenu">
+												<button type="button" class="subsubmenu__close icon-close"></button>
+												<div class="subsubmenu__legend">
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+															</picture>
+														</div> В квартире
+													</div>
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+															</picture>
+														</div> В частном доме
+													</div>
+												</div>
+												<ul class="subsubmenu__list">
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Установка смесителя <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link icon-right"> Все услуги </a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="submenu__item">
+											<button type="button" class="submenu__btn icon-chevron-right">Водоснабжение</button>
+											<div class="subsubmenu">
+												<button type="button" class="subsubmenu__close icon-close"></button>
+												<div class="subsubmenu__legend">
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+															</picture>
+														</div> В квартире
+													</div>
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+															</picture>
+														</div> В частном доме
+													</div>
+												</div>
+												<ul class="subsubmenu__list">
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Водоснабжение <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link icon-right"> Все услуги </a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="submenu__item">
+											<button type="button" class="submenu__btn icon-chevron-right">Канализация</button>
+											<div class="subsubmenu">
+												<button type="button" class="subsubmenu__close icon-close"></button>
+												<div class="subsubmenu__legend">
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+															</picture>
+														</div> В квартире
+													</div>
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+															</picture>
+														</div> В частном доме
+													</div>
+												</div>
+												<ul class="subsubmenu__list">
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Канализация <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link icon-right"> Все услуги </a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="submenu__item">
+											<button type="button" class="submenu__btn icon-chevron-right">Сварочные работы</button>
+											<div class="subsubmenu">
+												<button type="button" class="subsubmenu__close icon-close"></button>
+												<div class="subsubmenu__legend">
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+															</picture>
+														</div> В квартире
+													</div>
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+															</picture>
+														</div> В частном доме
+													</div>
+												</div>
+												<ul class="subsubmenu__list">
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Сварочные работы <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link icon-right"> Все услуги </a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="submenu__item">
+											<button type="button" class="submenu__btn icon-chevron-right">Мелкий ремонт</button>
+											<div class="subsubmenu">
+												<button type="button" class="subsubmenu__close icon-close"></button>
+												<div class="subsubmenu__legend">
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+															</picture>
+														</div> В квартире
+													</div>
+													<div class="subsubmenu__legend-item">
+														<div class="subsubmenu__icon">
+															<picture>
+																<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+															</picture>
+														</div> В частном доме
+													</div>
+												</div>
+												<ul class="subsubmenu__list">
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/house.webp" type="image/webp"><img src="img/icons/house.png" alt="Иконка">
+																</picture>
+															</div>
+															<div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link"> Мелкий ремонт <div class="subsubmenu__icon">
+																<picture>
+																	<source srcset="img/icons/flat.webp" type="image/webp"><img src="img/icons/flat.png" alt="Иконка">
+																</picture>
+															</div>
+														</a>
+													</li>
+													<li class="subsubmenu__item">
+														<a href="" class="subsubmenu__link icon-right"> Все услуги </a>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+									<div class="submenu__footer">
+										<div class="submenu__footer-text">Не нашли? <br> Используйте поиск</div>
+										<button type="button" class="submenu__search icon-search">Поиск</button>
+									</div>
+								</div>
+							</li>
+							<li class="menu__item menu__item-mobile">
+								<button type="button" class="menu__btn icon-chevron">Меню</button>
+								<ul class="submenu">
+									<li class="menu__item initial"><a href="" class="menu__link">Главная</a></li>
+									<li class="menu__item">
+										<button type="button" class="menu__btn icon-chevron">О нас</button>
+										<div class="submenu ">
+											<button type="button" class="submenu__close icon-close"></button>
+											<ul class="submenu__list">
+												<li class="submenu__item">
+													<a href="" class="submenu__link">Блог</a>
+												</li>
+												<li class="submenu__item">
+													<a href="" class="submenu__link">Контакты</a>
+												</li>
+												<li class="submenu__item">
+													<a href="" class="submenu__link">Отзывы</a>
+												</li>
+												<li class="submenu__item">
+													<a href="" class="submenu__link">Мелкий ремонт</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="menu__item"><a href="" class="menu__link">FAQ</a></li>
+									<li class="menu__item"><a href="" class="menu__link">Отзывы</a></li>
+									<li class="menu__item"><a href="" class="menu__link">Контакты</a></li>
+								</ul>
+							</li>
 						</ul>
+						<button type="button" class="menu__search-toggler">Поиск</button>
+						<a href="tel:89521599589" class="menu__phone icon-phone"></a>
 						<div class="menu__socials socials">
 							<a href="" class="socials__link icon-whatsapp"></a>
 							<a href="" class="socials__link icon-telegram"></a>
@@ -70,27 +841,30 @@
 		<main class="page">
 			<nav aria-label="Хлебные крошки" class="breadcrumbs">
 				<div class="breadcrumbs__container">
-					<ul class="breadcrumbs__list">
-						<li class="breadcrumbs__item">
-							<a href="/" class="breadcrumbs__link">Главная</a>
-						</li>
-						<li class="breadcrumbs__item">
-							<a href="" class="breadcrumbs__link">Услуги</a>
-						</li>
-						<li class="breadcrumbs__item">
-							<a class="breadcrumbs__link active">Установка смесителя в Томске</a>
-						</li>
-					</ul>
+					<div class="breadcrumbs__slider swiper">
+						<ul class="swiper-wrapper">
+							<li class="breadcrumbs__item swiper-slide">
+								<a href="/" class="breadcrumbs__link">Главная</a>
+							</li>
+							<li class="breadcrumbs__item swiper-slide">
+								<a href="" class="breadcrumbs__link">Услуги</a>
+							</li>
+							<li class="breadcrumbs__item swiper-slide">
+								<a class="breadcrumbs__link active">Установка смесителя в Томске</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</nav>
 			<div class="service">
 				<div class="service__container">
 					<aside class="service__sidebar">
-						<nav class="service__navbar">
+						<nav id="service-navbar" class="service__navbar">
+							<button type="button" data-fancybox-close="" class="service__navbar-close icon-close-circle"></button>
 							<h2 class="service__caption title-sm">Услуги</h2>
-							<ul class="service__list">
+							<ul class="service__list" data-spollers="" data-one-spoller="">
 								<li class="service__item">
-									<div class="service__item-caption">Водоснабжение</div>
+									<div class="service__item-caption _active" data-spoller="">Водоснабжение</div>
 									<ul class="service__categories">
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -99,7 +873,7 @@
 									</ul>
 								</li>
 								<li class="service__item">
-									<div class="service__item-caption">Отопление</div>
+									<div class="service__item-caption" data-spoller="">Отопление</div>
 									<ul class="service__categories">
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -108,7 +882,7 @@
 									</ul>
 								</li>
 								<li class="service__item">
-									<div class="service__item-caption">Канализация</div>
+									<div class="service__item-caption" data-spoller="">Канализация</div>
 									<ul class="service__categories">
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -117,7 +891,7 @@
 									</ul>
 								</li>
 								<li class="service__item">
-									<div class="service__item-caption">Сварочные работы</div>
+									<div class="service__item-caption" data-spoller="">Сварочные работы</div>
 									<ul class="service__categories">
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -126,7 +900,7 @@
 									</ul>
 								</li>
 								<li class="service__item">
-									<div class="service__item-caption">Мелкий ремонт</div>
+									<div class="service__item-caption" data-spoller="">Мелкий ремонт</div>
 									<ul class="service__categories">
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
 										<li class="service__categories-item"><a href="" class="service__categories-link">Смеситель</a></li>
@@ -153,7 +927,7 @@
 											<a href="" class="socials__link icon-whatsapp"></a>
 											<a href="" class="socials__link icon-telegram"></a>
 										</div>
-										<a href="" class="service-card__callback">позвонить</a>
+										<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 									</div>
 								</li>
 								<li class="service-card">
@@ -170,7 +944,7 @@
 											<a href="" class="socials__link icon-whatsapp"></a>
 											<a href="" class="socials__link icon-telegram"></a>
 										</div>
-										<a href="" class="service-card__callback">позвонить</a>
+										<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 									</div>
 								</li>
 								<li class="service-card">
@@ -187,7 +961,7 @@
 											<a href="" class="socials__link icon-whatsapp"></a>
 											<a href="" class="socials__link icon-telegram"></a>
 										</div>
-										<a href="" class="service-card__callback">позвонить</a>
+										<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 									</div>
 								</li>
 								<li class="service-card">
@@ -198,11 +972,11 @@
 									</div>
 									<div class="service-card__picture">
 										<picture>
-											<source srcset="img/promo.webp" type="image/webp"><img src="img/promo.png" alt="">
+											<source srcset="img/promo.webp" type="image/webp"><img src="img/promo.png" alt="Сантехник">
 										</picture>
 									</div>
 									<div class="service-card__title accent-color">Профессионал своего дела</div>
-									<a href="" class="service-card__btn btn btn-primary">Позвонить</a>
+									<a href="tel:89521599589" class="service-card__btn btn btn-primary">Позвонить</a>
 								</li>
 							</ul>
 						</div>
@@ -285,11 +1059,14 @@
 							</div>
 							<div class="service__main">
 								<h1 class="service__title title-sm">Установка смесителя в Томске</h1>
-								<div class="service__rate rate">
-									<span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span>
+								<div class="service__row">
+									<a href="#service-navbar" data-fancybox="" class="service__filter icon-filter"></a>
+									<div class="service__rate rate">
+										<span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span><span class="rate__item icon-star"></span>
+									</div>
 								</div>
 								<p class="service__desc">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Для установки и дальнейшего ухода за смесителем вам для установки и дальнейшего ухода за смесителем вам...</p>
-								<button type="button" class="service__more">Читать далее</button>
+								<a href="#info" class="service__more">Читать далее</a>
 								<ul class="service__info">
 									<li class="service__info-item">
 										<div class="service__info-icon">
@@ -301,8 +1078,47 @@
 											<div class="service__info-caption">Стоимость</div>
 											<div class="service__info-value">55 000 ₽</div>
 										</div>
+										<div class="service__info-more">
+											<button class="service__info-btn icon-question"></button>
+											<div class="service__popup ">
+												<div class="service__popup-header">
+													<div class="service__popup-title">Цена может измениться</div>
+													<button type="button" aria-label="Закрыть попап" class="service__popup-close icon-close-circle"></button>
+												</div>
+												<ul class="service__popup-list">
+													<li class="service__popup-row">
+														<div class="service__popup-service">Удлинить батарею</div>
+														<div class="service__popup-price">1 490 ₽</div>
+													</li>
+													<li class="service__popup-row">
+														<div class="service__popup-service">Удлинить батарею</div>
+														<div class="service__popup-price">1 490 ₽</div>
+													</li>
+													<li class="service__popup-row">
+														<div class="service__popup-service">Удлинить батарею</div>
+														<div class="service__popup-price">1 490 ₽</div>
+													</li>
+													<li class="service__popup-row">
+														<div class="service__popup-service">Удлинить батарею</div>
+														<div class="service__popup-price">1 490 ₽</div>
+													</li>
+													<li class="service__popup-row">
+														<div class="service__popup-service">Удлинить батарею</div>
+														<div class="service__popup-price">1 490 ₽</div>
+													</li>
+												</ul>
+												<p class="service__popup-text">Чтобы узнать более точную стоимость пришлите фотографию в WhatsApp</p>
+											</div>
+										</div>
 									</li>
-									<li class="service__info-item">
+									<!-- <li class="service__info-item">
+                                            <div class="service__info-caption">Стоимость может поменяться</div>
+                                            <button class="service__info-btn icon-question"></button>
+                                        </li> -->
+									<li class="service__info-socials">
+										<a href="" class="service__info-social icon-telegram">Telegram</a>
+										<a href="" class="service__info-social icon-whatsapp">WhatsApp</a>
+										<a href="tel:89521599589" class="service__info-social icon-phone">Позвонить</a>
 									</li>
 									<li class="service__info-item">
 										<div class="service__info-icon">
@@ -325,6 +1141,16 @@
 											<div class="service__info-caption">Гарантия</div>
 											<div class="service__info-value">10 лет</div>
 										</div>
+										<div class="service__info-more">
+											<button class="service__info-btn icon-info"></button>
+											<div class="service__popup">
+												<div class="service__popup-header">
+													<div class="service__popup-title">Гарантия на выполненные работы</div>
+													<button type="button" aria-label="Закрыть попап" class="service__popup-close icon-close-circle"></button>
+												</div>
+												<p class="service__popup-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis velit perspiciatis doloribus tenetur, facere illo maxime, ad soluta, voluptatem nisi sed accusamus amet aliquid assumenda recusandae deleniti quis autem. Nesciunt!</p>
+											</div>
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -336,19 +1162,19 @@
 									<thead>
 										<tr>
 											<th>Наименование работы</th>
-											<th>Ед. изм</th>
+											<th class="pc-only">Ед. изм</th>
 											<th>Цена</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td><a href="" class="icon-down"><span>Установка смесителя</span></a></td>
-											<td>Услуга</td>
+											<td class="pc-only">Услуга</td>
 											<td>от <span class="accent-color">1 490 ₽</span></td>
 										</tr>
 										<tr>
 											<td><a href="" class="icon-down"><span>Смеситель</span></a></td>
-											<td>шт.</td>
+											<td class="pc-only">шт.</td>
 											<td>от <span class="accent-color">990 ₽</span></td>
 										</tr>
 									</tbody>
@@ -356,6 +1182,54 @@
 							</div>
 							<a href="" class="prices__btn btn btn-white">Смотреть прайс полностью</a>
 						</section>
+						<div class="tabs" id="info">
+							<div class="tabs__btns swiper">
+								<div class="swiper-wrapper">
+									<button class="tabs__btn swiper-slide active">Информация</button>
+									<button class="tabs__btn swiper-slide">Калькулятор</button>
+									<button class="tabs__btn swiper-slide">Заголовок</button>
+									<button class="tabs__btn swiper-slide">Что-то ещё</button>
+								</div>
+							</div>
+							<div class="tabs__body">
+								<div class="tabs__content active">
+									<div class="text-block">
+										<h2 class="title-sm">Установка смесителя в Томске</h2>
+										<p>Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Для установки и дальнейшего ухода за смесителем вам понадобятся следующие инструменты и материалы.Расскажем, как самостоятельно установить однорычажный.</p>
+										<p>Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</p>
+										<p>Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный</p>
+									</div>
+								</div>
+								<div class="tabs__content ">
+									<div class="text-block">
+										<h2 class="title-sm">Калькулятор</h2>
+										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus quo excepturi, nisi placeat vitae iusto voluptas facilis earum amet consectetur quod sit. Ratione deleniti, iusto modi quia quod velit reprehenderit.</p>
+									</div>
+								</div>
+								<div class="tabs__content ">
+									<div class="text-block">
+										<h2 class="title-sm">Заголовок</h2>
+										<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis quia et aperiam amet sit commodi hic? Dolor corporis, aperiam error at accusantium vitae ut doloribus quod architecto accusamus minus eveniet?</p>
+										<ul>
+											<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fugit dignissimos impedit culpa, ullam quae corrupti aperiam iusto quibusdam. Laboriosam accusantium nemo ipsa iure, voluptates porro quo totam veniam natus.</li>
+											<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus accusantium modi facere quidem excepturi? Nesciunt possimus, ipsa voluptates deleniti quia aliquid impedit, blanditiis magnam tempora quis optio magni voluptatibus eum!</li>
+											<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tenetur voluptatem asperiores minus sit consectetur commodi, dicta doloremque repudiandae optio? Quod possimus iste quam magnam sint vitae recusandae ipsa aliquid!</li>
+										</ul>
+									</div>
+								</div>
+								<div class="tabs__content ">
+									<div class="text-block">
+										<h2 class="title-sm">Что-то ещё</h2>
+										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, explicabo! Dolor placeat perspiciatis repellat, iste doloribus veniam quis dolorem cum quasi nostrum excepturi inventore numquam ipsum facilis incidunt magnam sequi?</p>
+										<ol>
+											<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia dolorem, dolores nobis beatae officia labore suscipit. Aliquam error minus nulla quod deleniti, quidem, corporis vitae natus magni suscipit voluptates beatae!</li>
+											<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, voluptas necessitatibus. Possimus praesentium a eos unde exercitationem tempora qui deserunt eum, voluptate obcaecati iusto fugiat incidunt, molestias quidem eveniet ad.</li>
+											<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos cumque natus rem est odio excepturi inventore quas dignissimos in. Eligendi laudantium voluptas obcaecati explicabo nostrum iure commodi, repellat totam mollitia?</li>
+										</ol>
+									</div>
+								</div>
+							</div>
+						</div>
 						<section class="works">
 							<div class="works__header">
 								<h2 class="works__title title-sm">Наши работы</h2>
@@ -396,24 +1270,24 @@
 						</section>
 						<section class="faq">
 							<h2 class="faq__title title-sm">Часто задаваемые вопросы</h2>
-							<ul class="faq__list">
+							<ul class="faq__list" data-spollers="" data-one-spoller="">
 								<li class="faq__item">
-									<div class="faq__item-caption">Капает с гибкого шланга смесителя, что делать?</div>
+									<div class="faq__item-caption _active" data-spoller="">Капает с гибкого шланга смесителя, что делать?</div>
 									<div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
 								</li>
 								<li class="faq__item">
-									<div class="faq__item-caption">Какую подводку вы меняете?</div>
+									<div class="faq__item-caption" data-spoller="">Какую подводку вы меняете?</div>
 									<div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
 								</li>
 								<li class="faq__item">
-									<div class="faq__item-caption">Можно ли вызвать мастера в день звонка?</div>
+									<div class="faq__item-caption" data-spoller="">Можно ли вызвать мастера в день звонка?</div>
 									<div class="faq__item-body">Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну. Расскажем, как самостоятельно установить однорычажный или двухвентильный смеситель на раковину и ванну.</div>
 								</li>
 							</ul>
 						</section>
 						<section class="more">
 							<div class="more__header">
-								<h2 class="more__title title-sm">Часто задаваемые вопросы</h2>
+								<h2 class="more__title title-sm">Другие услуги по теме</h2>
 								<div class="more__controls">
 									<button type="button" class="more__prev swiper-button-prev"></button>
 									<button type="button" class="more__next swiper-button-next"></button>
@@ -435,7 +1309,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 									<li class="service-card swiper-slide">
@@ -452,7 +1326,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 									<li class="service-card swiper-slide">
@@ -469,7 +1343,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 									<li class="service-card swiper-slide">
@@ -486,7 +1360,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 									<li class="service-card swiper-slide">
@@ -503,7 +1377,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 									<li class="service-card swiper-slide">
@@ -520,7 +1394,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 									<li class="service-card swiper-slide">
@@ -537,7 +1411,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 									<li class="service-card swiper-slide">
@@ -554,7 +1428,7 @@
 												<a href="" class="socials__link icon-whatsapp"></a>
 												<a href="" class="socials__link icon-telegram"></a>
 											</div>
-											<a href="" class="service-card__callback">позвонить</a>
+											<a href="tel:89521599589" class="service-card__callback">позвонить</a>
 										</div>
 									</li>
 								</ul>
@@ -627,14 +1501,49 @@
 						<a href="" class="socials__link icon-telegram"></a>
 						<a href="" class="socials__link icon-vk"></a>
 					</div>
-					<a href="" class="footer__btn btn btn-secondary">Вызвать сантехника</a>
+					<a href="#callback" data-fancybox="" class="footer__btn btn btn-secondary">Вызвать сантехника</a>
 				</div>
 			</div>
-		</footer> <!-- plugnis -->
-		<script src="js/libs/fancybox.umd.js?_v=20250208203651"></script>
-		<script src="js/libs/swiper-bundle.min.js?_v=20250208203651"></script>
+		</footer>
+		<div id="callback" class="popup">
+			<div class="popup__body">
+				<button type="button" class="popup__close icon-close" data-fancybox-close=""></button>
+				<h3 class="popup__title">Оставить заявку</h3>
+				<form action="#" class="popup__form form">
+					<input type="tel" name="phone" required="" class="form__input" placeholder="Номер телефона">
+					<textarea name="message" class="form__textarea" placeholder="Опишите проблему"></textarea>
+					<button class="form__btn btn btn-primary">Отправить заявку</button>
+					<label class="form__privacy"> Нажимая на кнопку, вы даете свое согласие на обработку персональных данных </label>
+				</form>
+			</div>
+		</div>
+		<div id="add-review" class="popup">
+			<div class="popup__body">
+				<button type="button" data-fancybox-close="" class="popup__close icon-close"></button>
+				<h4 class="popup__title">Оставить отзыв</h4>
+				<form action="#" class="popup__form form">
+					<div class="star-rating">
+						<input type="radio" name="rate" id="rate-5" value="5" class="star-rating__input hidden" hidden="">
+						<label class="star-rating__label" for="rate-5"></label>
+						<input type="radio" name="rate" id="rate-4" value="4" class="star-rating__input hidden" hidden="">
+						<label class="star-rating__label" for="rate-4"></label>
+						<input type="radio" name="rate" id="rate-3" value="3" class="star-rating__input hidden" hidden="">
+						<label class="star-rating__label" for="rate-3"></label>
+						<input type="radio" name="rate" id="rate-2" value="2" class="star-rating__input hidden" hidden="">
+						<label class="star-rating__label" for="rate-2"></label>
+						<input type="radio" name="rate" id="rate-1" value="1" class="star-rating__input hidden" hidden="">
+						<label class="star-rating__label" for="rate-1"></label>
+					</div>
+					<input type="text" name="text" class="form__input" placeholder="Ваше имя">
+					<textarea name="quote" class="form__textarea" required="" placeholder="Напишите отзыв"></textarea>
+					<button type="submit" class="btn btn-primary">Отправить</button>
+				</form>
+			</div>
+		</div> <!-- plugnis -->
+		<script src="js/libs/fancybox.umd.js?_v=20250209183443"></script>
+		<script src="js/libs/swiper-bundle.min.js?_v=20250209183443"></script>
 		<!-- plugnis -->
-		<script src="js/app.min.js?_v=20250208203651"></script>
+		<script src="js/app.min.js?_v=20250209183443"></script>
 	</div>
 </body>
 

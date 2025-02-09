@@ -1,25 +1,33 @@
 .breadcrumbs {
-	padding: 1.62rem 0;
+	padding: 0.75rem 0;
+	@media (min-width: $md4) {
+		padding: 1.62rem 0;
+	}
 
 	// .breadcrumbs__container
 	&__container {
+		padding: 0 2rem;
 	}
 	// .breadcrumbs__list
-	&__list {
-		display: flex;
-		align-items: center;
+	&__slider {
 		color: #919191;
-		font-size: 1.25rem;
 		font-weight: 500;
-		gap: 0.5rem;
+		overflow: visible;
+		font-size: 0.875rem;
+		@media (min-width: $md5) {
+			font-size: 1rem;
+		}
+		@media (min-width: $md4) {
+			font-size: 1.25rem;
+		}
 	}
 	// .breadcrumbs__item
 	&__item {
 		display: inline-flex;
 		align-items: center;
+		width: fit-content;
 		gap: 0.5rem;
-		&::before {
-		}
+
 		&:not(:last-child) {
 			&::before {
 				order: 1;
