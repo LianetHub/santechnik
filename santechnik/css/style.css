@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
-  font-weight: 500;
+  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -17,16 +17,16 @@
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-SemiBold.woff") format("woff"), url("../fonts/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Montserrat-SemiBold.woff") format("woff"), url("../fonts/Montserrat-SemiBold.woff2") format("woff2");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -163,7 +163,7 @@ html {
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-  min-width: 320px;
+  min-width: 390px;
   min-height: 100%;
   line-height: normal;
   color: #30475d;
@@ -1047,8 +1047,12 @@ body.lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 1.5rem;
   padding: 0.575rem 1.5rem;
+  min-height: 3.75rem;
 }
 
 .menu .search {
@@ -1062,6 +1066,12 @@ body.lock {
   font-weight: 500;
   font-size: 1rem;
   gap: 1.25rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 66%;
+          flex: 0 1 66%;
 }
 
 .menu__item {
@@ -1080,10 +1090,10 @@ body.lock {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: calc(100% + 3rem);
+  -webkit-transform: translate(calc(-50% - 0.5rem), -50%);
+      -ms-transform: translate(calc(-50% - 0.5rem), -50%);
+          transform: translate(calc(-50% - 0.5rem), -50%);
+  width: calc(100% + 2rem);
   height: calc(100% + 2rem);
   border-radius: 0.75rem 0.75rem 0rem 0rem;
   background: #fff;
@@ -1094,7 +1104,7 @@ body.lock {
   content: "";
   position: absolute;
   bottom: -1.15rem;
-  left: calc(100% + 1.45rem);
+  left: calc(100% + 0.45rem);
   width: 1.5rem;
   height: 1.5rem;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='23' viewBox='0 0 24 23' fill='none'%3E%3Cmask id='mask0_2010_21' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='23'%3E%3Crect width='24' height='23' fill='%23D9D9D9'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_2010_21)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M-162 -39C-168.627 -39 -174 -33.6274 -174 -27V-0.999999C-174 12.2548 -163.255 23 -150 23H0H110.5C110.776 23 111 22.7761 111 22.5C111 22.2239 110.776 22 110.5 22H24C10.7452 22 0 11.2548 0 -2V-27C0 -33.6274 -5.37257 -39 -12 -39H-162Z' fill='white'/%3E%3C/g%3E%3C/svg%3E");
@@ -1172,9 +1182,6 @@ body.lock {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   background: linear-gradient(122deg, #51aaf2 15.48%, #007adc 24.09%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1182,6 +1189,7 @@ body.lock {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1.5rem;
+  display: none;
 }
 
 .submenu {
@@ -1199,10 +1207,6 @@ body.lock {
 
 .submenu.open {
   display: block;
-}
-
-.submenu:has(.subsubmenu.open) {
-  border-radius: 0 0 0 0.75rem;
 }
 
 .submenu:has(.subsubmenu.open) .submenu__close {
@@ -1321,7 +1325,6 @@ body.lock {
 
 .subsubmenu {
   display: none;
-  overflow-y: auto;
   margin-top: 0.75rem;
   width: 100%;
 }
@@ -1355,8 +1358,13 @@ body.lock {
   color: #919191;
 }
 
+.subsubmenu__body {
+  overflow-y: auto;
+  max-height: calc(100vh - var(--header-height, 10.75rem) - 27rem);
+  padding-right: 0.62rem;
+}
+
 .subsubmenu__list {
-  margin-top: 2rem;
   display: -ms-grid;
   display: grid;
   gap: 1.25rem;
@@ -2917,6 +2925,17 @@ body.lock {
     font-size: 2.5rem;
   }
 
+  .menu__item:has(.submenu.open)::before {
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: calc(100% + 3rem);
+  }
+
+  .menu__item:has(.submenu.open)::after {
+    left: calc(100% + 1.45rem);
+  }
+
   .submenu {
     padding: 2.5rem 1.62rem 1.37rem;
     width: 32.25rem;
@@ -3067,6 +3086,14 @@ body.lock {
     display: none !important;
   }
 
+  .menu__item-mobile::before {
+    display: none;
+  }
+
+  .menu__item-mobile::after {
+    display: none;
+  }
+
   .menu__search-toggler {
     display: none;
   }
@@ -3099,6 +3126,10 @@ body.lock {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.56rem;
     row-gap: 2.4rem;
+  }
+
+  .subsubmenu__list:not(:first-child) {
+    margin-top: 2rem;
   }
 
   .footer {
@@ -3381,16 +3412,24 @@ body.lock {
     overflow-y: visible;
   }
 
+  .submenu:has(.subsubmenu.open) {
+    border-radius: 0 0 0 0.75rem;
+  }
+
   .subsubmenu {
     margin-top: 0;
     background: #fff;
     border-radius: 0 0.75rem 0.75rem 0;
-    padding: 2.5rem 1.62rem 1.37rem;
+    padding: 2.5rem 1rem 1.37rem;
     position: absolute;
     left: 100%;
     top: 0;
     bottom: 0;
     min-width: 30rem;
+  }
+
+  .subsubmenu__body {
+    max-height: 100%;
   }
 
   .promo__container {
@@ -3705,6 +3744,18 @@ body.lock {
 
   .pc-only {
     display: none;
+  }
+
+  .header.scroll .menu__phone {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .header.scroll .menu__list {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
   }
 
   .header__search {
