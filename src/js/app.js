@@ -179,10 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (target.matches('.prices__btn')) {
 
+            target.previousElementSibling?.querySelector('.prices__table-hidden').slideToggle(300, () => { }, "table-row-group");
+            target.classList.toggle('active');
 
-
-            target.previousElementSibling?.querySelector('.prices__table-hidden').slideDown(300, () => { }, "table-row-group");
-            target.remove()
+            if (target.classList.contains('active')) {
+                target.textContent = "Cкрыть";
+            } else {
+                target.textContent = "Смотреть прайс полностью";
+            }
         }
 
         if (target.matches('.text-block__full')) {
