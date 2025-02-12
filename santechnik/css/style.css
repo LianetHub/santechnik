@@ -9,6 +9,14 @@
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
+  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-display: swap;
   src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
@@ -19,14 +27,6 @@
   font-display: swap;
   src: url("../fonts/Montserrat-SemiBold.woff") format("woff"), url("../fonts/Montserrat-SemiBold.woff2") format("woff2");
   font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
-  font-weight: 500;
   font-style: normal;
 }
 
@@ -2649,11 +2649,15 @@ body.lock {
   margin-bottom: 1em;
 }
 
-.text-block__hidden {
-  display: none;
+.text-block__body {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.text-block__hidden.active {
+.text-block__body.active {
   display: block;
 }
 
@@ -3100,6 +3104,14 @@ body.lock {
 
   .menu__item-mobile > .submenu .submenu__list {
     display: contents;
+  }
+
+  .menu__item-mobile > .submenu .submenu__close {
+    display: none !important;
+  }
+
+  .menu__item-mobile .submenu.open .submenu__close {
+    display: block !important;
   }
 
   .menu__item-mobile > .menu__btn {
@@ -3832,10 +3844,6 @@ body.lock {
     margin-bottom: 0.75rem;
     padding-bottom: 0;
     border-bottom: 0;
-  }
-
-  .menu__item-mobile > .submenu .menu__item .submenu .submenu__close {
-    display: none;
   }
 
   .menu__item-mobile > .submenu .menu__btn {

@@ -363,9 +363,6 @@
 								border-bottom: 0;
 							}
 						}
-						.submenu__close {
-							display: none;
-						}
 					}
 				}
 				.menu__btn {
@@ -386,6 +383,14 @@
 				display: contents;
 				& .submenu__list {
 					display: contents;
+				}
+				.submenu__close {
+					display: none !important;
+				}
+			}
+			& .submenu.open {
+				.submenu__close {
+					display: block !important;
 				}
 			}
 			& > .menu__btn {
