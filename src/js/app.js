@@ -15,9 +15,11 @@ if (typeof Fancybox !== "undefined" && Fancybox !== null) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    devFunctions.isWebp();
     devFunctions.OS();
     devFunctions.spollers();
-    devFunctions.mask()
+    devFunctions.mask();
+    devFunctions.lazy();
 
 
 
@@ -175,6 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        if (target.matches('.prices__btn')) {
+
+
+
+            target.previousElementSibling?.querySelector('.prices__table-hidden').slideDown(300, () => { }, "table-row-group");
+            target.remove()
+        }
 
 
     });
@@ -339,6 +348,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     initMoveSearchOnScroll();
+
+
+    // observer swipe to refresh
+    let touchStartY = 0;
+    let isSwipeToRefresh = false;
+
+    document.addEventListener("touchstart", (event) => {
+        if (window.scrollY === 0) {
+            touchStartY = event.touches[0].clientY;
+        }
+    });
+
+    document.addEventListener("touchmove", (event) => {
+        if (window.scrollY === 0 && event.touches[0].clientY > touchStartY + 50) {
+            isSwipeToRefresh = true;
+        }
+    });
+
+    document.addEventListener("touchend", () => {
+        if (isSwipeToRefresh) {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.style.scrollBehavior = "auto";
+                requestAnimationFrame(() => {
+                    document.documentElement.style.scrollBehavior = "";
+                });
+            }, 50);
+        }
+        isSwipeToRefresh = false;
+    });
+
 
 
 

@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "Montserrat";
+  font-display: swap;
+  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "icons";
   font-display: swap;
   src: url("../fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2");
@@ -22,18 +30,10 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Montserrat";
-  font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-}
-
 .faq__item-caption._active::before,
 .faq__item-caption::before,
 .works__slide::before,
-.service__slider-main::before,
+.service__slide::before,
 .service__item-caption::before,
 .search__bar-item::before,
 .swiper-button-next::before,
@@ -152,7 +152,7 @@
 
 .icon-zoom:before,
 .works__slide:before,
-.service__slider-main:before {
+.service__slide:before {
   content: "\e914";
 }
 
@@ -2166,10 +2166,15 @@ body.lock {
   display: flex;
   border-radius: 0.75rem;
   overflow: hidden;
+}
+
+.service__slide {
+  border-radius: 0.75rem;
+  overflow: hidden;
   position: relative;
 }
 
-.service__slider-main::after {
+.service__slide::after {
   content: "";
   position: absolute;
   top: 0;
@@ -2183,7 +2188,7 @@ body.lock {
   pointer-events: none;
 }
 
-.service__slider-main::before {
+.service__slide::before {
   position: absolute;
   color: #fff;
   bottom: 1.25rem;
@@ -2191,10 +2196,6 @@ body.lock {
   font-size: 1.75rem;
   z-index: 3;
   pointer-events: none;
-}
-
-.service__slide {
-  border-radius: 0.75rem;
 }
 
 .service__slider-bottom {
@@ -2880,6 +2881,15 @@ body.lock {
       -ms-flex-order: 1;
           order: 1;
   color: #007adc;
+}
+
+.prices__table table tbody + tbody tr:first-child {
+  border-top: 0.0625rem solid #efefef;
+}
+
+.prices__table table tbody.prices__table-hidden {
+  display: none;
+  width: 100%;
 }
 
 .prices__btn {

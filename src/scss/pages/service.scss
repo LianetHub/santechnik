@@ -138,6 +138,11 @@
 		display: flex;
 		border-radius: 0.75rem;
 		overflow: hidden;
+	}
+	// .service__slide
+	&__slide {
+		border-radius: 0.75rem;
+		overflow: hidden;
 		position: relative;
 		&::after {
 			content: "";
@@ -161,10 +166,6 @@
 			z-index: 3;
 			pointer-events: none;
 		}
-	}
-	// .service__slide
-	&__slide {
-		border-radius: 0.75rem;
 	}
 	// .service__slider-bottom
 	&__slider-bottom {
@@ -920,6 +921,17 @@
 							border-color: transparent;
 						}
 					}
+				}
+			}
+			& tbody {
+				& + tbody {
+					tr:first-child {
+						border-top: rem(1) solid #efefef;
+					}
+				}
+				&.prices__table-hidden {
+					display: none;
+					width: 100%;
 				}
 			}
 		}

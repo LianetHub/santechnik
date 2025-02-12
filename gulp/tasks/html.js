@@ -67,6 +67,12 @@ export const html = () => {
         .pipe(app.plugins.replace(/@img\//g, "img/"))
         .pipe(app.plugins.if(app.isBuild, addWebpSources()))
         .pipe(app.plugins.if(app.isBuild, webpHtmlNosvg()))
+        .pipe(app.plugins.if(app.isBuild, app.plugins.replace('srcset="img/', function handleReplace(match) {
+            return 'srcset="img/1x1.webp"' + ' ' + 'data-' + match;
+        })))
+        .pipe(app.plugins.if(app.isBuild, app.plugins.replace('src="img/', function handleReplace(match) {
+            return 'src="img/1x1.png"' + ' ' + 'data-' + match;
+        })))
         .pipe(
             app.plugins.if(
                 app.isBuild,
