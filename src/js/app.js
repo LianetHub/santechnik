@@ -35,15 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
             devFunctions.removeLocking()
         }
 
-        if (target.matches('.service__info-btn')) {
-            target.nextElementSibling?.classList.add('active');
-            devFunctions.addLocking()
-        }
+        // if (target.matches('.service__info-btn')) {
+        //     target.nextElementSibling?.classList.add('active');
+        //     devFunctions.addLocking()
+        // }
 
-        if (target.matches('.service__popup-close')) {
-            document.querySelectorAll('.service__popup')?.forEach(popup => popup.classList.remove('active'));
-            devFunctions.removeLocking()
-        }
+        // if (target.matches('.service__popup-close')) {
+        //     document.querySelectorAll('.service__popup')?.forEach(popup => popup.classList.remove('active'));
+        //     devFunctions.removeLocking()
+        // }
 
 
         if (target.matches('.search__toggler')) {
@@ -183,6 +183,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             target.previousElementSibling?.querySelector('.prices__table-hidden').slideDown(300, () => { }, "table-row-group");
             target.remove()
+        }
+
+        if (target.matches('.text-block__full')) {
+            target.classList.toggle('active');
+            target.previousElementSibling?.classList.toggle('active');
+
+            if (target.classList.contains('active')) {
+                target.textContent = "Cкрыть";
+            } else {
+                target.textContent = "Читать далее";
+            }
         }
 
 

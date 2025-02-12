@@ -1,15 +1,15 @@
 @font-face {
-  font-family: "Montserrat";
+  font-family: "icons";
   font-display: swap;
-  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
+  src: url("../fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "icons";
+  font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2");
+  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -1200,7 +1200,7 @@ body.lock {
   border-radius: 0rem 0.75rem 0.75rem 0.75rem;
   background: #fff;
   display: none;
-  max-height: calc(100vh - var(--header-height, 10.75rem));
+  max-height: calc(100svh - var(--header-height, 10.75rem) - 10rem);
   overflow-y: auto;
   padding: 1.875rem 1.125rem 1rem;
 }
@@ -1360,7 +1360,7 @@ body.lock {
 
 .subsubmenu__body {
   overflow-y: auto;
-  max-height: calc(100vh - var(--header-height, 10.75rem) - 27rem);
+  max-height: calc(100svh - var(--header-height, 10.75rem) - 27rem);
   padding-right: 0.62rem;
 }
 
@@ -2649,6 +2649,22 @@ body.lock {
   margin-bottom: 1em;
 }
 
+.text-block__hidden {
+  display: none;
+}
+
+.text-block__hidden.active {
+  display: block;
+}
+
+.text-block__full {
+  margin-top: 1rem;
+  color: #007adc;
+  margin-bottom: 2.56rem;
+  display: inline-block;
+  font-size: 1.25rem;
+}
+
 .works {
   padding: 1.875rem 0;
 }
@@ -3079,6 +3095,10 @@ body.lock {
   }
 
   .menu__item-mobile > .submenu {
+    display: contents;
+  }
+
+  .menu__item-mobile > .submenu .submenu__list {
     display: contents;
   }
 
@@ -3824,6 +3844,10 @@ body.lock {
 
   .menu__item-mobile > .submenu .menu__btn::before {
     margin-left: auto;
+  }
+
+  .menu__item-mobile .subsubmenu__close {
+    display: none;
   }
 
   .menu__btn.icon-chevron::before,

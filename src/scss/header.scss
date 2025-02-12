@@ -375,11 +375,18 @@
 					}
 				}
 			}
+			& .subsubmenu__close {
+				display: none;
+			}
 		}
 		@media (min-width: $md4) {
 			display: contents;
+
 			& > .submenu {
 				display: contents;
+				& .submenu__list {
+					display: contents;
+				}
 			}
 			& > .menu__btn {
 				display: none !important;
@@ -469,7 +476,7 @@
 	border-radius: 0rem 0.75rem 0.75rem 0.75rem;
 	background: #fff;
 	display: none;
-	max-height: calc(100vh - $header);
+	max-height: calc(100svh - $header - 10rem);
 	overflow-y: auto;
 	padding: 1.875rem 1.125rem 1rem;
 	@media (min-width: $md5) {
@@ -676,7 +683,7 @@
 	}
 	&__body {
 		overflow-y: auto;
-		max-height: calc(100vh - $header - 27rem);
+		max-height: calc(100svh - $header - 27rem);
 		padding-right: 0.62rem;
 		@media (min-width: $md3) {
 			max-height: 100%;

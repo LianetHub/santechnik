@@ -646,6 +646,23 @@
 	}
 }
 
+.text-block {
+	&__hidden {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+	&__full {
+		margin-top: 1rem;
+		color: #007adc;
+		margin-bottom: 2.56rem;
+		display: inline-block;
+
+		font-size: 1.25rem;
+	}
+}
+
 .works {
 	padding: rem(30) 0;
 	@media (min-width: $md4) {
