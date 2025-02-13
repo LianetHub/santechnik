@@ -9,16 +9,16 @@
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
-  font-weight: 500;
+  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -163,7 +163,7 @@ html {
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
-  min-width: 390px;
+  min-width: 320px;
   min-height: 100%;
   line-height: normal;
   color: #30475d;
@@ -785,6 +785,7 @@ body.lock {
   font-weight: 600;
   padding: 1.25rem 2rem;
   border-radius: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .btn::after {
@@ -1047,12 +1048,9 @@ body.lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  gap: 1.5rem;
-  padding: 0.575rem 1.5rem;
   min-height: 3.75rem;
+  padding: 0.575rem 0.575rem;
+  gap: 0.5rem;
 }
 
 .menu .search {
@@ -1065,13 +1063,7 @@ body.lock {
   display: flex;
   font-weight: 500;
   font-size: 1rem;
-  gap: 1.25rem;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 66%;
-          flex: 0 1 66%;
+  gap: 0.5rem;
 }
 
 .menu__item {
@@ -1090,10 +1082,10 @@ body.lock {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(calc(-50% - 0.5rem), -50%);
-      -ms-transform: translate(calc(-50% - 0.5rem), -50%);
-          transform: translate(calc(-50% - 0.5rem), -50%);
-  width: calc(100% + 2rem);
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: calc(100% + 1rem);
   height: calc(100% + 2rem);
   border-radius: 0.75rem 0.75rem 0rem 0rem;
   background: #fff;
@@ -1195,14 +1187,14 @@ body.lock {
 .submenu {
   position: absolute;
   top: calc(100% + 1rem);
-  width: calc(100vw - 1.5rem);
-  left: -1.5rem;
   border-radius: 0rem 0.75rem 0.75rem 0.75rem;
   background: #fff;
   display: none;
-  max-height: calc(100svh - var(--header-height, 10.75rem) - 10rem);
   overflow-y: auto;
   padding: 1.875rem 1.125rem 1rem;
+  width: calc(100vw - 2.5rem);
+  left: -0.5rem;
+  max-height: calc(100dvh - var(--header-height, 10.75rem));
 }
 
 .submenu.open {
@@ -1356,12 +1348,6 @@ body.lock {
           align-items: center;
   gap: 0.5rem;
   color: #919191;
-}
-
-.subsubmenu__body {
-  overflow-y: auto;
-  max-height: calc(100svh - var(--header-height, 10.75rem) - 27rem);
-  padding-right: 0.62rem;
 }
 
 .subsubmenu__list {
@@ -1631,7 +1617,7 @@ body.lock {
 }
 
 .promo__benefit-icon {
-  width: 3rem;
+  width: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1706,7 +1692,7 @@ body.lock {
   -webkit-box-shadow: 0 0.25rem 0.75rem 0 rgba(0, 0, 0, 0.07);
           box-shadow: 0 0.25rem 0.75rem 0 rgba(0, 0, 0, 0.07);
   height: auto;
-  padding: 1.12rem 0.78rem;
+  padding: 1.12rem 0.5rem;
 }
 
 .service-card__image {
@@ -1777,9 +1763,11 @@ body.lock {
   text-transform: uppercase;
   -webkit-transition: background-color 0.3s ease, color 0.3s ease;
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.875rem;
   border-radius: 0.375rem;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  width: 100%;
 }
 
 .service-card__logo {
@@ -1998,7 +1986,7 @@ body.lock {
 }
 
 .review__place-rate .rate__item {
-  font-size: 1.3rem;
+  font-size: 0.75rem;
 }
 
 .review__place-value {
@@ -2927,6 +2915,58 @@ body.lock {
 }
 
 @media (min-width: 389.98px) {
+  .btn {
+    font-size: 1rem;
+  }
+
+  .menu {
+    gap: 1.5rem;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0.575rem 1.5rem;
+  }
+
+  .menu__list {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 1.25rem;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 66%;
+            flex: 0 1 66%;
+  }
+
+  .menu__item:has(.submenu.open)::before {
+    width: calc(100% + 2rem);
+    -webkit-transform: translate(calc(-50% - 0.5rem), -50%);
+        -ms-transform: translate(calc(-50% - 0.5rem), -50%);
+            transform: translate(calc(-50% - 0.5rem), -50%);
+  }
+
+  .submenu {
+    width: calc(100vw - 1.5rem);
+    left: -1.5rem;
+  }
+
+  .promo__benefit-icon {
+    width: 3rem;
+  }
+
+  .service-card {
+    padding: 1.12rem 0.78rem;
+  }
+
+  .service-card__callback {
+    width: auto;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .review__place-rate .rate__item {
+    font-size: 1.3rem;
+  }
+
   .service__popup {
     min-width: 21.625rem;
   }
@@ -3461,6 +3501,8 @@ body.lock {
   }
 
   .subsubmenu__body {
+    overflow-x: hidden;
+    overflow-y: auto;
     max-height: 100%;
   }
 
@@ -3864,6 +3906,12 @@ body.lock {
   .menu__btn.swiper-button-next::before,
   .menu__btn.swiper-button-prev::before {
     font-size: 0.5em;
+  }
+
+  .submenu__list {
+    overflow-y: auto;
+    padding-right: 0.62rem;
+    max-height: calc(100dvh - var(--header-height, 10.75rem) - 6rem);
   }
 
   .service-card__btn {

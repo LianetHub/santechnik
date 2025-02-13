@@ -99,6 +99,10 @@
 	font-weight: 600;
 	padding: 1.25rem 2rem;
 	border-radius: 0.75rem;
+	font-size: 0.875rem;
+	@media (min-width: $md6) {
+		font-size: 1rem;
+	}
 	@media (min-width: $md4) {
 		font-size: 1.25rem;
 	}
