@@ -9,16 +9,16 @@
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
-  font-weight: 500;
+  src: url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -1560,7 +1560,7 @@ body.lock {
 }
 
 .no-webp .promo {
-  background: url("../img/promo-background.jpg") center 0/cover no-repeat; }
+  background: url("../img/promo-background.jpg") center/cover no-repeat; }
 
 .promo {
   padding-top: calc(var(--header-height, 10.75rem) + 1.12rem);
@@ -2258,6 +2258,10 @@ body.lock {
   opacity: 0.25;
 }
 
+.service__slider-thumbs {
+  width: 100%;
+}
+
 .service__thumb {
   position: relative;
   height: 4.9375rem;
@@ -2582,6 +2586,7 @@ body.lock {
 
 .tabs__content {
   display: none;
+  font-size: 0.875rem;
 }
 
 .tabs__content.active {
@@ -3194,8 +3199,6 @@ body.lock {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -ms-grid-columns: (1fr)[2];
-    grid-template-columns: repeat(2, 1fr);
     gap: 2.56rem;
     row-gap: 2.4rem;
   }
@@ -3429,6 +3432,10 @@ body.lock {
 
   .tabs__body {
     margin-top: 3.12rem;
+  }
+
+  .tabs__content {
+    font-size: 1.25rem;
   }
 
   .tabs__content p {
@@ -3695,6 +3702,11 @@ body.lock {
     font-size: 1.125rem;
   }
 
+  .subsubmenu__list {
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .footer__container {
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
@@ -3908,10 +3920,10 @@ body.lock {
     font-size: 0.5em;
   }
 
-  .submenu__list {
+  .subsubmenu__list {
     overflow-y: auto;
     padding-right: 0.62rem;
-    max-height: calc(100dvh - var(--header-height, 10.75rem) - 6rem);
+    max-height: calc(100dvh - var(--header-height, 10.75rem) - 28rem);
   }
 
   .service-card__btn {
@@ -4101,4 +4113,4 @@ body.lock {
   }
 }
 
-.webp .promo { background: url(../img/promo-background.webp) center 0/cover no-repeat; }
+.webp .promo { background: url(../img/promo-background.webp) center/cover no-repeat; }

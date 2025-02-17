@@ -186,6 +186,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 target.textContent = "Cкрыть";
             } else {
                 target.textContent = "Смотреть прайс полностью";
+                window.scrollTo({
+                    top: document.querySelector('.prices')?.getBoundingClientRect().top,
+                    behavior: "smooth",
+                })
+
             }
         }
 
@@ -197,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 target.textContent = "Cкрыть";
             } else {
                 target.textContent = "Читать далее";
+
             }
         }
 
@@ -288,7 +294,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const thumbsSlider = new Swiper(slider.querySelector('.service__slider-thumbs'), {
                 slidesPerView: 3,
-                spaceBetween: 12
+                spaceBetween: 12,
+                watchOverflow: true
             })
 
             const mainSlider = new Swiper(slider.querySelector('.service__slider-main'), {

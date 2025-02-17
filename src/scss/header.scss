@@ -560,12 +560,6 @@
 	}
 	// .submenu__list
 	&__list {
-		@media (max-width: $md4) {
-			overflow-y: auto;
-			padding-right: 0.62rem;
-			max-height: calc(100dvh - $header - 6rem);
-		}
-
 		@media (min-width: $md5) {
 			min-width: 14.75rem;
 			white-space: nowrap;
@@ -720,15 +714,21 @@
 		display: grid;
 		gap: 1.25rem;
 		margin-top: 0.75rem;
-
+		@media (max-width: $md4) {
+			overflow-y: auto;
+			padding-right: 0.62rem;
+			max-height: calc(100dvh - $header - 28rem);
+		}
 		@media (min-width: $md4) {
 			&:not(:first-child) {
 				margin-top: 2rem;
 			}
 			align-items: center;
-			grid-template-columns: repeat(2, 1fr);
 			gap: 2.56rem;
 			row-gap: 2.4rem;
+		}
+		@media (min-width: $md2) {
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 	// .subsubmenu__item

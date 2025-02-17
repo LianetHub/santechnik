@@ -231,6 +231,7 @@
 	}
 	// .service__slider-thumbs
 	&__slider-thumbs {
+		width: 100%;
 	}
 	// .service__thumb
 	&__thumb {
@@ -589,6 +590,10 @@
 	// .tabs__content
 	&__content {
 		display: none;
+		font-size: 0.875rem;
+		@media (min-width: $md4) {
+			font-size: 1.25rem;
+		}
 		&.active {
 			display: block;
 		}

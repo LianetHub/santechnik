@@ -1,5 +1,5 @@
 .promo {
-	background: url("@img/promo-background.jpg") center 0 / cover no-repeat;
+	background: url("@img/promo-background.jpg") center / cover no-repeat;
 	padding-top: calc($header + 1.12rem);
 	@media (min-width: $md4) {
 		padding-top: calc($header + 5rem);
