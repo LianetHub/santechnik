@@ -5,6 +5,18 @@ export const lazy = () => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 const lazyImage = entry.target;
+                const picture = lazyImage.closest('picture');
+
+
+                if (picture) {
+                    const sources = picture.querySelectorAll('source[data-srcset]');
+                    sources.forEach(source => {
+                        source.srcset = source.dataset.srcset;
+                        source.removeAttribute('data-srcset');
+                    });
+
+                    picture.innerHTML = picture.innerHTML;
+                }
 
                 if (lazyImage.hasAttribute("data-src")) {
                     lazyImage.src = lazyImage.dataset.src;
@@ -14,11 +26,6 @@ export const lazy = () => {
                     lazyImage.addEventListener('error', () => {
                         console.warn(`Ошибка загрузки: ${lazyImage.src}`);
                     });
-                }
-
-                if (lazyImage.hasAttribute("data-srcset")) {
-                    lazyImage.srcset = lazyImage.dataset.srcset;
-                    lazyImage.removeAttribute('data-srcset');
                 }
 
                 lazyImage.addEventListener('load', () => {
@@ -34,7 +41,6 @@ export const lazy = () => {
         imageObserver.observe(lazyImage);
     });
 
-
     setTimeout(() => {
         document.querySelectorAll('img[data-src], source[data-srcset]').forEach((img) => {
             if (img.dataset.src || img.dataset.srcset) {
@@ -43,7 +49,6 @@ export const lazy = () => {
             }
         });
     }, 3000);
-
 
     const loadVideoIfIntersecting = (entries, observer) => {
         entries.forEach(entry => {
